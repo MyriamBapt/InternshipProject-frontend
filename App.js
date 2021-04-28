@@ -1,4 +1,4 @@
-import 'react-native-gesture-handler';
+// import 'react-native-gesture-handler'; (makes everything bug when i run app)
 import React from 'react';
 import type {Node} from 'react';
 import { Text, View } from "react-native";
@@ -15,8 +15,8 @@ const App: () => Node = () => {
     <Provider store={store}>
       <View>
         <Text>C'est en travaux, ça arrive !</Text>
-        <ProListing/>
       </View>
+      <ProListing/>
     </Provider>
   )}
 export default App;

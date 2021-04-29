@@ -6,7 +6,7 @@ const HeartFavorite = () => {
   const HeartFilled = 'https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678087-heart-512.png';
 
 
-  const HeartEmpty = 'https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-heart-outline-256.png';
+  const HeartEmpty ='https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-heart-outline-256.png' ;
 
   const [favorite, setFavorite] = useState(false);
   const [url, setUrl] = useState(HeartEmpty)

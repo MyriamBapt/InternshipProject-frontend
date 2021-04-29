@@ -1,18 +1,22 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { Icon } from "react-native-elements";
+import { useNavigation } from "@react-navigation/native";
 
 interface ButtonBookProps{
   text: string;
+  screen: string;
+  id: number;
 }
 
 const ButtonBook= (props: ButtonBookProps) => {
 
+  const navigation = useNavigation();
+
   return(
     <TouchableOpacity
       style={styles.appButtonContainer}
-      onPress={() => {}}>
-
+      onPress={() => navigation.navigate(props.screen, {id: props.id})}>
       <Text style={styles.appButtonText}>
         {props.text} <Icon
               size={13}
@@ -20,7 +24,6 @@ const ButtonBook= (props: ButtonBookProps) => {
               type='font-awesome'
               color='white'/>
       </Text>
-
     </TouchableOpacity>
   );
 };

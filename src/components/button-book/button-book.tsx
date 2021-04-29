@@ -9,12 +9,12 @@ const ButtonBook= () => {
       style={styles.appButtonContainer}
       onPress={() => {}}>
 
-      <Text style={styles.appButtonText}> Text exemple
-        <Icon
-          size={13}
-          name='calendar'
-          type='font-awesome'
-          color='white'/>
+      <Text style={styles.appButtonText}>
+        Book <Icon
+              size={13}
+              name='calendar'
+              type='font-awesome'
+              color='white'/>
       </Text>
 
     </TouchableOpacity>
@@ -25,15 +25,16 @@ export default ButtonBook;
 
 const styles = StyleSheet.create({
   appButtonText: {
+    flex:1,
+    flexDirection: "row",
     fontSize: 14,
     lineHeight: 16,
     color: '#FFFFFF',
     letterSpacing: 0.12,
     alignSelf: 'center',
-    fontWeight: "bold",
     alignItems: "center",
-    justifyContent: "center",
-
+    justifyContent: "space-between",
+    fontFamily: 'Poppins-SemiBold',
   },
 
   appButtonContainer: {
@@ -41,14 +42,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#4EBDD6",
     borderRadius: 25,
     paddingVertical: 10,
-    paddingHorizontal: 12,
+    paddingHorizontal: 10,
     alignItems: "center",
     justifyContent: "center",
 
   },
-
-  iconContainer:{
-    flex:2
-  }
-
 });

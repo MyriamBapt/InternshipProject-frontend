@@ -5,18 +5,21 @@ import { Card, Paragraph } from "react-native-paper";
 import HeartFavorite from "../heart-favorite/heart-favorite";
 import StarsRating from "../../../../components/stars-rating/stars-rating";
 import ButtonBook from "../../../../components/button-book/button-book";
+import { useNavigation } from "@react-navigation/native";
 
 interface CardProfileProps{
   //professional: ProfessionalModel
 }
 
-const CardProfile = ({ professional }) => {
+const CardProfile = ({ professional, screen }) => {
+
+  const navigation = useNavigation();
 
   return(
     <View style={styles.container}>
       <Card>
         <View>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity onPress={() => navigation.navigate(screen, {id: professional.id})}>
           <Card.Cover source={{ uri: 'https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425_960_720.png' }} style={styles.cardCover}/>
         </TouchableOpacity>
 
@@ -61,7 +64,7 @@ const CardProfile = ({ professional }) => {
 
         <Card.Actions>
           <View style={styles.buttonContainer}>
-           <ButtonBook text='Book'/>
+           <ButtonBook text='Book' screen='Profile' id={professional.id}/>
           </View>
         </Card.Actions>
 

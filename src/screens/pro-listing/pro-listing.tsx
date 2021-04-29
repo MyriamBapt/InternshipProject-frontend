@@ -1,19 +1,21 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
-import { SearchBar } from "react-native-elements";
 import CardProfile from "./components/card-profile/card-profile";
+import SearchBar from "./components/search-bar/search-bar";
 
 interface ProListingProps {
-  //proData: ProModel; TO DO MODEL
+  //proData: ProModel; TO DO
 }
 
-const ProListing: FC<ProListingProps> = () => {
+const ProListing: FC<ProListingProps> = (props:ProListingProps) => {
+
+  const [searchTerm, setSearchTerm] = useState('');
 
   const tempData = [
     {
       id: 1,
       first_name: 'Jean',
-      last_name: 'DUOPONT',
+      last_name: 'Dupont',
       email: 'test@gmil.com',
       phone: '0123456789',
       city: 'Lyon',
@@ -28,7 +30,7 @@ const ProListing: FC<ProListingProps> = () => {
     {
       id: 2,
       first_name: 'Paul',
-      last_name: 'BOUDIN',
+      last_name: 'Boudin',
       email: 'testagain@gmil.com',
       phone: '0197845213',
       city: 'Paris',
@@ -42,8 +44,8 @@ const ProListing: FC<ProListingProps> = () => {
 
     {
       id: 3,
-      first_name: 'paula',
-      last_name: 'TOURNESOL',
+      first_name: 'Paula',
+      last_name: 'Tournesol',
       email: 'testagain@gmil.com',
       phone: '0197845213',
       city: 'Paris',
@@ -60,6 +62,14 @@ const ProListing: FC<ProListingProps> = () => {
 
   return(
     <View style={styles.container}>
+      <View>
+        <SearchBar
+          term={searchTerm}
+          onTermChange={setSearchTerm}
+          onTermSubmit={ () => {} }
+        />
+      </View>
+    <View style={styles.container}>
       <View style={styles.listContainer}>
         <FlatList
           data={tempData}
@@ -69,6 +79,7 @@ const ProListing: FC<ProListingProps> = () => {
         />
       </View>
     </View>
+   </View>
   );
 };
 

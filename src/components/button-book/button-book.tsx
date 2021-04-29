@@ -2,7 +2,11 @@ import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { Icon } from "react-native-elements";
 
-const ButtonBook= () => {
+interface ButtonBookProps{
+  text: string;
+}
+
+const ButtonBook= (props: ButtonBookProps) => {
 
   return(
     <TouchableOpacity
@@ -10,7 +14,7 @@ const ButtonBook= () => {
       onPress={() => {}}>
 
       <Text style={styles.appButtonText}>
-        Book <Icon
+        {props.text} <Icon
               size={13}
               name='calendar'
               type='font-awesome'
@@ -33,7 +37,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.12,
     alignSelf: 'center',
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "center",
     fontFamily: 'Poppins-SemiBold',
   },
 

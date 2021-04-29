@@ -6,8 +6,11 @@ import HeartFavorite from "../heart-favorite/heart-favorite";
 import StarsRating from "../../../../components/stars-rating/stars-rating";
 import ButtonBook from "../../../../components/button-book/button-book";
 
-const CardProfile = ({ professional }) => {
+interface CardProfileProps{
+  //professional: ProfessionalModel
+}
 
+const CardProfile = ({ professional }) => {
 
   return(
     <View style={styles.container}>
@@ -58,7 +61,7 @@ const CardProfile = ({ professional }) => {
 
         <Card.Actions>
           <View style={styles.buttonContainer}>
-           <ButtonBook/>
+           <ButtonBook text='Book'/>
           </View>
         </Card.Actions>
 
@@ -76,11 +79,10 @@ const styles = StyleSheet.create({
     flex:0.5,
     flexDirection: "column",
     margin: 8,
-    borderRadius:30
+    borderRadius:10,
   },
 
   locationContainer:{
-
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 8,
@@ -131,7 +133,10 @@ const styles = StyleSheet.create({
   },
 
   cardCover:{
-    borderRadius:10,
+    borderTopRightRadius: 5,
+    borderTopLeftRadius: 5,
+    borderBottomRightRadius: 10,
+    borderBottomLeftRadius: 10,
     height:150
   },
 

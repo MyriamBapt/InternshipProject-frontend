@@ -33,8 +33,10 @@ const ProAllReviews: FC<ProAllReviewsProps> = (props:ProAllReviewsProps) => {
 
   return(
     <View style={styles.container}>
+
       <View style={styles.top}>
       </View>
+
       <View style={styles.main}>
         <View style={styles.header}>
           <View style={styles.headerRow}>
@@ -48,6 +50,7 @@ const ProAllReviews: FC<ProAllReviewsProps> = (props:ProAllReviewsProps) => {
         </View>
         <View style={styles.buttonRow}>
         </View>
+
         <View style={styles.list}>
           <FlatList
             data={fakeData}
@@ -55,6 +58,7 @@ const ProAllReviews: FC<ProAllReviewsProps> = (props:ProAllReviewsProps) => {
             renderItem={({item}) => <ReviewCard/>}
           />
         </View>
+
       </View>
     </View>
   )

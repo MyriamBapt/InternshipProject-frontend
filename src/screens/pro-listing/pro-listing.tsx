@@ -64,6 +64,7 @@ const ProListing: FC<ProListingProps> = () => {
         <FlatList
           data={tempData}
           numColumns={2}
+          keyExtractor={(item) => item.id}
           renderItem={({item}) => <CardProfile professional={item}  screen='Profile' />}
         />
       </View>

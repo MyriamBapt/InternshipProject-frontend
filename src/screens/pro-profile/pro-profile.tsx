@@ -7,12 +7,16 @@ import navigation from "../../router/navigation";
 import { Icon } from "react-native-elements";
 import RoundAvatar from "../../components/round-avatar/round-avatar";
 import Tag from "./components/tag";
+import { useNavigation } from "@react-navigation/native";
 
 interface ProProfileProps {
   //proData: ProModel;
+
 }
 
 const ProProfile: FC<ProProfileProps> = (props: ProProfileProps) => {
+
+  const navigation = useNavigation();
 
   /*const navigation = useNavigation();
   const [price, setPrice] = useState(results.first_meeting_price);
@@ -42,9 +46,11 @@ const ProProfile: FC<ProProfileProps> = (props: ProProfileProps) => {
 
   return(
     <View style={styles.mainContainer}>
+
       <View style={styles.avatarContainer}>
         <RoundAvatar photo='need to be added'/>
       </View>
+
       <View style={styles.top}>
       </View>
       <View style={styles.container}>
@@ -53,10 +59,11 @@ const ProProfile: FC<ProProfileProps> = (props: ProProfileProps) => {
             <Image source={{uri : 'https://raw.githubusercontent.com/AboutReact/sampleresource/master/star_filled.png'}} style={styles.star}/>
           </View>
           <Text style={styles.stars}> XX/5 </Text>
-          <TouchableOpacity onPress={() => {}}>
+          <TouchableOpacity onPress={() =>  navigation.navigate('Reviews' )}>
             <Text style={styles.reviews}> reviews</Text>
           </TouchableOpacity>
         </View>
+
         <View style={styles.main}>
           <Text style={styles.name}>first_name last_name</Text>
           <View style={styles.subtitle}>
@@ -69,6 +76,7 @@ const ProProfile: FC<ProProfileProps> = (props: ProProfileProps) => {
           </View>
           <Text style={styles.description}>Bonum integritas corporis: misera debilitas. Nunc de hominis summo bono quaeritur; Quis istud, quaeso, nesciebat? Confecta res esset. Si verbum sequimur.</Text>
         </View>
+
         <View style={styles.locations}>
           <View style={styles.locationrow}>
             <View style={styles.icon}>
@@ -78,7 +86,7 @@ const ProProfile: FC<ProProfileProps> = (props: ProProfileProps) => {
                 type='font-awesome'
                 color='white'/>
             </View>
-            <Text style={styles.remote}>Remote</Text>
+            <Text style={styles.locationDetailsText}>Remote</Text>
           </View>
           <View style={styles.locationrow}>
             <View style={styles.icon}>
@@ -90,13 +98,20 @@ const ProProfile: FC<ProProfileProps> = (props: ProProfileProps) => {
             </View>
             <View style={styles.locationdetails}>
               <Text style={styles.locationTitle}>Location</Text>
-              <Text style={styles.place}>city</Text>
+              <Text style={styles.locationDetailsText}>city</Text>
             </View>
           </View>
         </View>
+
         <View style={styles.flatlistContainer}>
-          <FlatList data={fakeData} numColumns={2} columnWrapperStyle={{justifyContent: 'space-between'}} renderItem={({item}) => <Tag text={item} />} style={styles.flatlist}/>
+          <FlatList
+            data={fakeData}
+            numColumns={2}
+            columnWrapperStyle={{justifyContent: 'space-between'}}
+            renderItem={({item}) => <Tag text={item} />}
+            style={styles.flatlist}/>
         </View>
+
         <View style={styles.priceAndDuration}>
           <View style={styles.ToggleContainer}>
             <TouchableOpacity style={clickedOne ? styles.buttonpressed : styles.buttonContainer} onPress={ToggleOne}>
@@ -113,9 +128,11 @@ const ProProfile: FC<ProProfileProps> = (props: ProProfileProps) => {
           <Text style={styles.price}>price</Text>
           <Text style={styles.description}>duration</Text>
         </View>
+
         <View style={styles.button}>
           <ButtonBook text='Book an appointment'/>
         </View>
+
       </View>
     </View>
   )

@@ -30,6 +30,8 @@ const styles = StyleSheet.create({
   },
 
   text: {
+    fontFamily:"Poppins-Regular",
+    color:'#555B70',
     margin: 10,
   },
 });

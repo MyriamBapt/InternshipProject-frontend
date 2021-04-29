@@ -9,14 +9,12 @@ interface ReviewCardProps{
 const ReviewCard = (props: ReviewCardProps) => {
   return(
     <View style={styles.container}>
-
       <View style={styles.ratingAndDate}>
         <StarsRating/>
         <Text style={styles.date}>date_hour</Text>
       </View>
       <Text style={styles.author}>first_name last_name</Text>
       <Text style={styles.comment}>review</Text>
-
     </View>
   )
 };
@@ -37,12 +35,14 @@ const styles = StyleSheet.create({
   },
 
   date:{
+    fontFamily:"Poppins-Light",
     fontSize: 10,
     color: '#9096AA',
     lineHeight: 18,
   },
 
   author:{
+    fontFamily:"Poppins-SemiBold",
     fontSize:18,
     fontWeight: "bold",
     lineHeight: 21,
@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
   },
 
   comment:{
+    fontFamily:"Poppins-Regular",
     fontSize: 12,
     color: '#9096AA',
     lineHeight: 18,

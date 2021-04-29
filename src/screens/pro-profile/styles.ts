@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
   },
 
   reviews:{
+    fontFamily:"Poppins-Regular",
     margin:10,
     fontSize: 12,
     lineHeight: 15,
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
   },
 
   name:{
-    fontWeight: "bold",
+    fontFamily:"Poppins-SemiBold",
     fontSize: 18,
     lineHeight: 27,
     color: '#555B70',
@@ -61,6 +62,7 @@ const styles = StyleSheet.create({
   },
 
   subtext:{
+    fontFamily:"Poppins-Light",
     fontSize: 11,
     lineHeight: 15,
     color: '#555B70',
@@ -68,6 +70,7 @@ const styles = StyleSheet.create({
   },
 
   description:{
+    fontFamily:"Poppins-Light",
     fontSize: 12,
     lineHeight: 20,
     color: '#555B70',
@@ -94,24 +97,20 @@ const styles = StyleSheet.create({
   },
 
   locationTitle:{
+    fontFamily:"Poppins-Regular",
     color: '#9096AA',
   },
 
-  place:{
+  locationDetailsText:{
+    fontFamily:"Poppins-Light",
     fontSize: 10,
     lineHeight: 15,
     color: '#555B70',
-  },
-
-  remote:{
-    fontSize: 10,
-    lineHeight: 15,
-    color: '#555B70',
-    marginLeft:3,
+    marginLeft:2,
   },
 
   price:{
-    fontWeight: "bold",
+    fontFamily:"Poppins-SemiBold",
     fontSize: 36,
     lineHeight: 54,
     letterSpacing: 0.12,
@@ -150,7 +149,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
 
   },
-
 
   icon:{
     backgroundColor: '#4EBDD6',
@@ -199,6 +197,7 @@ const styles = StyleSheet.create({
   },
 
   appButtonText: {
+    fontFamily:"Poppins-SemiBold",
     fontSize: 12,
     lineHeight: 16,
     color: '#555B70',

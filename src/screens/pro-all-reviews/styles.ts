@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
   },
 
   reviews:{
+    fontFamily:"Poppins-Regular",
     margin:10,
     fontSize: 12,
     lineHeight: 15,

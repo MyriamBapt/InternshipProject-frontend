@@ -8,7 +8,8 @@ import ButtonBook from "../../../../components/button-book/button-book";
 import { useNavigation } from "@react-navigation/native";
 
 interface CardProfileProps{
-  //professional: ProfessionalModel
+  //professional: ProfessionalModel,
+  //screen: string
 }
 
 const CardProfile = ({ professional, screen }) => {
@@ -30,7 +31,7 @@ const CardProfile = ({ professional, screen }) => {
 
           <View style={styles.starContainer}>
             <View style={styles.reviews}>
-              <StarsRating/>
+              <StarsRating ratings={professional.stars}/>
               <Text style={styles.numberRatings}> Reviews</Text>
             </View>
           </View>

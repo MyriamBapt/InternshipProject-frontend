@@ -3,33 +3,27 @@ import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 
 const HeartFavorite = () => {
 
-  const HeartFilled = 'https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678087-heart-512.png';
-
-
-  const HeartEmpty ='https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-heart-outline-256.png' ;
-
   const [favorite, setFavorite] = useState(false);
-  const [url, setUrl] = useState(HeartEmpty)
-
 
   const toggleFavHandler = ( ) => {
 
     if ( favorite === true){
       setFavorite(false);
-      setUrl(HeartEmpty)
+      //need to suppress from fav list
     }
     else{
       setFavorite(true);
-      setUrl(HeartFilled)
+      //need to add to fav list
     }
-
   }
 
   return(
     <View>
       <TouchableOpacity activeOpacity={0.7} onPress={toggleFavHandler} style={styles.container}>
         <Image
-          source={{uri: url}} style={styles.heart}/>
+          source={favorite
+            ? require('./img/hearticon.png')
+            : require('./img/empty_hearticon.png')} style={styles.heart}/>
       </TouchableOpacity>
     </View>
   );

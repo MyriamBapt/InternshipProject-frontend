@@ -203,7 +203,6 @@ const styles = StyleSheet.create({
     color: '#555B70',
     letterSpacing: 0.12,
     alignSelf: 'center',
-    fontWeight: "bold",
     padding:2,
 
   },

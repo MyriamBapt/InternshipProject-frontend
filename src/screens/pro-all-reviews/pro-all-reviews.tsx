@@ -33,24 +33,22 @@ const ProAllReviews: FC<ProAllReviewsProps> = (props:ProAllReviewsProps) => {
 
   return(
     <View style={styles.container}>
-
       <View style={styles.top}>
       </View>
-
       <View style={styles.main}>
         <View style={styles.header}>
           <View style={styles.headerRow}>
             <RoundAvatar photo='to be added'/>
             <View style={styles.starContainer}>
-              <Image source={{uri : 'https://raw.githubusercontent.com/AboutReact/sampleresource/master/star_filled.png'}} style={styles.star}/>
+              <Image source={require('./img/star_filled.png')} style={styles.star}/>
             </View>
             <Text style={styles.numberOfStars}> X,X/5 </Text>
             <Text style={styles.reviews}>reviews</Text>
           </View>
         </View>
         <View style={styles.buttonRow}>
+        <ToggleReviews textOne='Recent' textTwo='Positive' textThree='Negative'/>
         </View>
-
         <View style={styles.list}>
           <FlatList
             data={fakeData}
@@ -58,7 +56,6 @@ const ProAllReviews: FC<ProAllReviewsProps> = (props:ProAllReviewsProps) => {
             renderItem={({item}) => <ReviewCard/>}
           />
         </View>
-
       </View>
     </View>
   )

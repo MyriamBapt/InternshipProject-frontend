@@ -24,7 +24,8 @@ const ProListing: FC<ProListingProps> = (props:ProListingProps) => {
       firstMeetingPrice: 50,
       followupMeetingPrice: 40,
       avatarUrl: 'https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425_960_720.png',
-      description: 'Hi ! This is my description. Hope you like it'
+      description: 'Hi ! This is my description. Hope you like it',
+      stars:3,
     },
 
     {
@@ -39,7 +40,8 @@ const ProListing: FC<ProListingProps> = (props:ProListingProps) => {
       firstMeetingPrice: 50,
       followupMeetingPrice: 40,
       avatarUrl: 'https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425_960_720.png',
-      description: 'Hi ! This is my description. Hope you like it'
+      description: 'Hi ! This is my description. Hope you like it',
+      stars:4,
     },
 
     {
@@ -54,7 +56,8 @@ const ProListing: FC<ProListingProps> = (props:ProListingProps) => {
       firstMeetingPrice: 50,
       followupMeetingPrice: 40,
       avatarUrl: 'https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425_960_720.png',
-      description: 'Hi ! This is my description. Hope you like it'
+      description: 'Hi ! This is my description. Hope you like it',
+      stars:5,
     },
   ];
 

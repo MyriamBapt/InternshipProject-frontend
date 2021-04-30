@@ -11,15 +11,12 @@ import { useNavigation } from "@react-navigation/native";
 
 interface ProProfileProps {
   //proData: ProModel;
-
 }
 
 const ProProfile: FC<ProProfileProps> = (props: ProProfileProps) => {
 
   const navigation = useNavigation();
-
-  /*const navigation = useNavigation();
-  const [price, setPrice] = useState(results.first_meeting_price);
+  /*const [price, setPrice] = useState(results.first_meeting_price);
   const [duration, setDuration] = useState('1h - 1h30') */
   const fakeData: string[] = ['tag one','tag two', 'tag three'];
 

@@ -1,7 +1,11 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
-const SimpleButton = () => {
+interface SimpleButtonProps{
+  text: string,
+}
+
+const SimpleButton = (props: SimpleButtonProps) => {
 
   return(
     <TouchableOpacity
@@ -21,21 +25,21 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     letterSpacing: 0.12,
     alignSelf: 'center',
-    fontWeight: "bold",
+    fontFamily:'Poppins-SemiBold',
     alignItems: "center",
     justifyContent: "center",
-
+    paddingTop: 10,
+    paddingBottom: 10,
   },
 
   appButtonContainer: {
-    flex: 0.8,
+    flex: 0.5,
     backgroundColor: "#4EBDD6",
     borderRadius: 25,
     paddingVertical: 10,
     paddingHorizontal: 12,
     alignItems: "center",
     justifyContent: "center",
-
   }
 
 });

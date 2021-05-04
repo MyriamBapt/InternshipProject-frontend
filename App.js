@@ -22,7 +22,7 @@ const App: () => Node = () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Professionals">
+        <Stack.Navigator initialRouteName="Pro-review">
           <Stack.Screen
             name="Professionnals"
             component={ProListing}
@@ -88,10 +88,11 @@ const App: () => Node = () => {
             headerTitleStyle: {
               fontFamily: 'Poppins-SemiBold',
               fontSize: 25,
-              letterSpacing: 0.12, },
+              letterSpacing: 0.12,
+              color: '#FFFFFF'},
             headerStyle: {
               backgroundColor: '#4EBDD6',
-              headerTintColor: '#FFFFFF'},
+            },
             }}
           />
           <Stack.Screen
@@ -102,10 +103,11 @@ const App: () => Node = () => {
             headerTitleStyle: {
               fontFamily: 'Poppins-SemiBold',
               fontSize: 25,
-              letterSpacing: 0.12, },
+              letterSpacing: 0.12,
+              color:'#FFFFFF'},
             headerStyle: {
               backgroundColor: '#4EBDD6',
-              headerTintColor: '#FFFFFF'},
+            },
             }}
           />
           <Stack.Screen

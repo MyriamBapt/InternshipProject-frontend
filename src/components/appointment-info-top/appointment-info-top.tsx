@@ -14,17 +14,18 @@ const AppointmentInfoTop: FC<AppointmentInfoTopProps> = (props: AppointmentInfoT
     <View style={styles.container}>
       <Text style={styles.title}>Your appointment with</Text>
         <View style={styles.profInfo}>
-          <RoundAvatar photo='https://cdn.pixabay.com/photo/2021/04/27/18/54/sunflower-6212201_960_720.jpg'/>
+          <RoundAvatar photo='https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425_960_720.png'/>
             <View style={styles.profIdentity}>
-              <Text style={styles.text}>Nom Prénom</Text>
-              <Text style={styles.text}>Occupation
-              <Icon
-              size={19}
-              name='check-circle'
-              type='font-awesome'
-              color="#FFFFFF"
-              />
-              </Text>
+              <Text style={styles.name}>Nom Prénom</Text>
+              <View style={styles.occupationRow}>
+                <Text style={styles.occupation}>Occupation</Text>
+                <Icon
+                  size={19}
+                  name='check-circle'
+                  type='font-awesome'
+                  color="#FFFFFF"
+                />
+              </View>
         </View>
       </View>
         <AppointmentInfosBottom/>
@@ -46,27 +47,39 @@ const styles = StyleSheet.create({
 
   profInfo:{
     flexDirection: 'row',
-    backgroundColor:'#e4e4e4',
+    backgroundColor:'#4DC7DD',
     borderRadius: 20,
     padding: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   profIdentity:{
     flex:1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 
   title:{
     fontFamily: 'Poppins-SemiBold',
     color:'#FFFFFF',
     fontSize: 20,
+    marginBottom: 10,
   },
 
-  text:{
-    fontFamily:'Popins-Regular',
+  name:{
+    fontFamily:'Poppins-SemiBold',
+    color:'#FFFFFF',
+    fontSize: 20,
+  },
+
+  occupation:{
+    fontFamily:'Poppins-Regular',
     color:'#FFFFFF',
     fontSize: 16,
+    marginRight:5
+  },
+
+  occupationRow:{
+    flexDirection:'row'
   },
 
   avatarContainer:{

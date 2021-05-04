@@ -9,7 +9,6 @@ interface AppointmentInfosBottomProps{
 const AppointmentInfosBottom = (props: AppointmentInfosBottomProps) => {
   return(
     <View style={styles.container}>
-      <Text style={styles.title}>Your appointment with nameOfProf</Text>
       <View style={styles.infosAndPrice}>
         <View style={styles.infos}>
           <View style={styles.infoRow}>
@@ -64,13 +63,6 @@ const styles = StyleSheet.create({
       alignItems: "center",
       justifyContent: "center",
       padding: 10,
-    },
-
-    title:{
-      fontFamily: 'Poppins-Regular',
-      fontSize: 20,
-      color: '#FFFFFF',
-      marginBottom: 10,
     },
 
     infosAndPrice:{

@@ -11,30 +11,33 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-  paymentContainer:{
+  confirmationContainer:{
     flex: 1,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
     backgroundColor:'#FFFFFF',
-
+    padding: 20
   },
 
   textConfirmation:{
     fontFamily:'Poppins-SemiBold',
     fontSize: 16,
-    color:'#555B70'
+    color:'#555B70',
   },
 
   textConfirmationInfo:{
     fontFamily:'Poppins-Light',
     fontSize: 14,
-    color:'#555B70'
+    color:'#555B70',
+    textAlign:'center',
+    marginTop: 5,
   },
 
   textThankYou:{
     fontFamily:'Poppins-Regular',
     fontSize: 15,
-    color:'#555B70'
+    color:'#555B70',
+    marginTop: 15,
   },
 
   blocText:{
@@ -44,7 +47,8 @@ const styles = StyleSheet.create({
   },
 
   buttonContainer:{
-    flex: 1
+    flex: 2,
+    marginBottom: -10
   },
 
 })

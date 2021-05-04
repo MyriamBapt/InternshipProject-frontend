@@ -15,9 +15,9 @@ const AppointmentConfirmed: FC<AppointmentConfirmedProps> = (props: AppointmentC
       <View style={styles.topContainer}>
         <AppointmentInfoTop/>
       </View>
-      <View style={styles.paymentContainer}>
+      <View style={styles.confirmationContainer}>
         <Icon
-          size={60}
+          size={100}
           name='check-circle'
           type='font-awesome'
           color="#4EBDD6"

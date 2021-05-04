@@ -28,8 +28,8 @@ const styles = StyleSheet.create({
     fontFamily:'Poppins-SemiBold',
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: 10,
-    paddingBottom: 10,
+    paddingTop: 8,
+    paddingBottom: 8,
   },
 
   appButtonContainer: {

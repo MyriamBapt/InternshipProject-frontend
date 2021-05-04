@@ -12,10 +12,48 @@ const styles = StyleSheet.create({
   },
 
   paymentContainer:{
-    flex: 1,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    backgroundColor:'#FFFFFF'
+    flex: 1.2,
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    backgroundColor:'#FFFFFF',
+    justifyContent: "center",
+    padding: 10
+  },
+
+  input: {
+    borderWidth: 1,
+    borderColor: '#d8d8d8',
+    height: 40,
+    margin: 12,
+    borderRadius: 10,
+  },
+
+  inputGroup:{
+    flex:1,
+    justifyContent: "space-evenly",
+  },
+
+  label:{
+    fontFamily: 'Poppins-Regular',
+    color: '#555B70',
+    marginLeft: 20,
+  },
+
+  inputRow:{
+    flexDirection: 'row',
+  },
+
+  buttonContainer:{
+    flex:1,
+    marginBottom: -10
+  },
+
+  textPayment:{
+    fontFamily: 'Poppins-SemiBold',
+    fontSize: 18,
+    textAlign: "center",
+    marginVertical: 5,
+    color: '#555B70',
   },
 
 })

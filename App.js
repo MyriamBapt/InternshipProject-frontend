@@ -22,12 +22,12 @@ const App: () => Node = () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Pro-review">
+        <Stack.Navigator initialRouteName="Professionals">
           <Stack.Screen
-            name="Professionnals"
+            name="Professionals"
             component={ProListing}
             options={{
-            title: 'Find professionnals',
+            title: 'Find professionals',
             headerTitleStyle: {
               fontFamily: 'Poppins-SemiBold',
               fontSize: 25,

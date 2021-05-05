@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import styles from "./styles";
 import SimpleButton from "../../components/simple-button/simple-button";
 import AppointmentInfosBottom from "../../components/appointment-infos-bottom/appointment-infos-bottom";
@@ -15,7 +15,7 @@ interface AppointmentDateProps{
 const AppointmentDate: FC<AppointmentDateProps> = (props: AppointmentDateProps) => {
 
   return(
-    <View style={styles.mainContainer}>
+    <ScrollView contentContainerStyle={styles.mainContainer}>
       <View style={styles.calendarContainer}>
 
         <View style={styles.profInfo}>
@@ -36,17 +36,17 @@ const AppointmentDate: FC<AppointmentDateProps> = (props: AppointmentDateProps) 
         <View style={styles.calendar}>
         <CalendarDateTime/>
         </View>
-        <Text style={styles.textChosenData}>Your appointment is on XX/XX at XX:XX </Text>
-        <View style={styles.buttonContainer}>
-          <SimpleButton text='Done'/>
-        </View>
+          <Text style={styles.textChosenData}>Your appointment is on XX/XX at XX:XX </Text>
+          <View style={styles.buttonContainer}>
+            <SimpleButton text='Done'/>
+          </View>
       </View>
 
       <View style={styles.bottomContainer}>
         <Text style={styles.titleAppointment}>Your appointment with Professional</Text>
         <AppointmentInfosBottom/>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

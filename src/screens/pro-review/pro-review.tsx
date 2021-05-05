@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import styles from "./styles";
 import RoundAvatar from "../../components/round-avatar/round-avatar";
 import { Icon } from "react-native-elements";
@@ -30,6 +30,7 @@ const tagHandler = () => {
 
       </View>
       <View style={styles.mainContainer}>
+        <ScrollView>
 
         <Text style={styles.titleMeeting}>How was your meeting with</Text>
 
@@ -99,9 +100,10 @@ const tagHandler = () => {
         <View style={styles.buttonContainer}>
           <SimpleButton text='Done'/>
         </View>
-
+        </ScrollView>
       </View>
-    </View>
+      </View>
+
   );
 };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Icon } from "react-native-elements";
 import { Card, Paragraph } from "react-native-paper";
@@ -8,11 +8,13 @@ import ButtonBook from "../../../../components/button-book/button-book";
 import { useNavigation } from "@react-navigation/native";
 
 interface CardProfileProps{
-  //professional: ProfessionalModel,
-  //screen: string
+  professional: any,
+  screen: string
 }
 
-const CardProfile = ({ professional, screen }) => {
+const CardProfile: FC<CardProfileProps> = (props: any) => {
+
+  const {professional, screen} = props;
 
   const navigation = useNavigation();
 
@@ -21,7 +23,7 @@ const CardProfile = ({ professional, screen }) => {
       <Card>
         <View>
         <TouchableOpacity onPress={() => navigation.navigate(screen, {id: professional.id})}>
-          <Card.Cover source={{ uri: 'https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425_960_720.png' }} style={styles.cardCover}/>
+          <Card.Cover source={{ uri: professional.avatar_url }} style={styles.cardCover}/>
         </TouchableOpacity>
 
         <View style={styles.heartContainer}>

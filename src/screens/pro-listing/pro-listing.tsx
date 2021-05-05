@@ -1,7 +1,11 @@
-import React, { FC, useState } from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import React, { FC, useEffect, useState } from "react";
+import { View, ActivityIndicator, StyleSheet, FlatList, Text } from "react-native";
 import CardProfile from "./components/card-profile/card-profile";
 import SearchBar from "./components/search-bar/search-bar";
+
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllProfsRequest } from "../../store/actions";
+import { IProfState } from "../../store/reducers/profs-reducer";
 
 interface ProListingProps {
   //proData: ProModel; TO DO
@@ -9,59 +13,19 @@ interface ProListingProps {
 
 const ProListing: FC<ProListingProps> = (props:ProListingProps) => {
 
+  const dispatch = useDispatch();
+  // @ts-ignore
+  const profs = useSelector((state: IProfState) => state.profs.profs);
+  // @ts-ignore
+  const error = useSelector((state: IProfState) => state.profs.error);
+  // @ts-ignore
+  const loading = useSelector((state: IProfState) => state.profs.loading);
+
+  useEffect( () => {
+    dispatch(fetchAllProfsRequest());
+  }, []);
+
   const [searchTerm, setSearchTerm] = useState('');
-
-  const tempData = [
-    {
-      id: 1,
-      first_name: 'Jean',
-      last_name: 'Dupont',
-      email: 'test@gmil.com',
-      phone: '0123456789',
-      city: 'Lyon',
-      occupation: 'nutrition',
-      yearsActivity: 8,
-      firstMeetingPrice: 50,
-      followupMeetingPrice: 40,
-      avatarUrl: 'https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425_960_720.png',
-      description: 'Hi ! This is my description. Hope you like it',
-      stars:3,
-    },
-
-    {
-      id: 2,
-      first_name: 'Paul',
-      last_name: 'Boudin',
-      email: 'testagain@gmil.com',
-      phone: '0197845213',
-      city: 'Paris',
-      occupation: 'nutrition',
-      yearsActivity: 8,
-      firstMeetingPrice: 50,
-      followupMeetingPrice: 40,
-      avatarUrl: 'https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425_960_720.png',
-      description: 'Hi ! This is my description. Hope you like it',
-      stars:4,
-    },
-
-    {
-      id: 3,
-      first_name: 'Paula',
-      last_name: 'Tournesol',
-      email: 'testagain@gmil.com',
-      phone: '0197845213',
-      city: 'Paris',
-      occupation: 'nutrition',
-      yearsActivity: 8,
-      firstMeetingPrice: 50,
-      followupMeetingPrice: 40,
-      avatarUrl: 'https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425_960_720.png',
-      description: 'Hi ! This is my description. Hope you like it',
-      stars:5,
-    },
-  ];
-
-
 
   return(
     <View style={styles.container}>
@@ -72,13 +36,15 @@ const ProListing: FC<ProListingProps> = (props:ProListingProps) => {
           onTermSubmit={ () => {} }
         />
       </View>
+      {loading ? <ActivityIndicator size="large" color="#00ff00" /> : null}
+      {error ? <Text>{error}</Text> : null}
     <View style={styles.container}>
       <View style={styles.listContainer}>
         <FlatList
-          data={tempData}
+          data={profs}
           numColumns={2}
           keyExtractor={(item) => item.id}
-          renderItem={({item}) => <CardProfile professional={item}  screen='Profile' />}
+          renderItem={({item}) => <CardProfile key={item.id} professional={item}  screen='Profile' />}
         />
       </View>
     </View>

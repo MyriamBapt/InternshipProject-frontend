@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Text, TextInput, View } from "react-native";
+import { ScrollView, Text, TextInput, View } from "react-native";
 import SimpleButton from "../../components/simple-button/simple-button";
 import AppointmentInfosBottom from "../../components/appointment-infos-bottom/appointment-infos-bottom";
 import styles from "./styles";
@@ -14,7 +14,8 @@ const AppointmentInfo: FC<AppointmentInfoProps> = (props: AppointmentInfoProps) 
   const [text, onChangeText] = React.useState("Useless Text");
 
   return(
-    <View style={styles.mainContainer}>
+
+      <ScrollView contentContainerStyle={styles.mainContainer}>
       <View style={styles.FormContainer}>
 
         <View style={styles.inputGroup}>
@@ -90,7 +91,8 @@ const AppointmentInfo: FC<AppointmentInfoProps> = (props: AppointmentInfoProps) 
         <Text style={styles.titleAppointment}>Your appointment with Professional</Text>
         <AppointmentInfosBottom/>
       </View>
-    </View>
+      </ScrollView>
+
   );
 };
 

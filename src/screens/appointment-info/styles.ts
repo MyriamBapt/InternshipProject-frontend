@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   buttonContainer:{
     flex:1,
     marginTop: 40,
-    marginBottom: -20
+    justifyContent: "center"
   },
 
   titleAppointment:{

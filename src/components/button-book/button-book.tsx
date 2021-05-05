@@ -1,22 +1,30 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Icon } from "react-native-elements";
+import { useNavigation } from "@react-navigation/native";
 
-const ButtonBook= () => {
+interface ButtonBookProps{
+  text: string;
+  screen: string;
+  id: number;
+}
+
+const ButtonBook= (props: ButtonBookProps) => {
+
+  const navigation = useNavigation();
 
   return(
     <TouchableOpacity
-      style={styles.appButtonContainer}
-      onPress={() => {}}>
-
-      <Text style={styles.appButtonText}> Text exemple
+      style={styles.ButtonContainer}
+      onPress={() => navigation.navigate(props.screen, {id: props.id})}>
+      <View style={styles.buttonRow}>
+        <Text style={styles.ButtonText}>{props.text}</Text>
         <Icon
-          size={13}
+          size={17}
           name='calendar'
           type='font-awesome'
           color='white'/>
-      </Text>
-
+      </View>
     </TouchableOpacity>
   );
 };
@@ -24,31 +32,29 @@ const ButtonBook= () => {
 export default ButtonBook;
 
 const styles = StyleSheet.create({
-  appButtonText: {
+
+  ButtonContainer: {
+    flex: 0.9,
+    backgroundColor: "#4EBDD6",
+    borderRadius: 25,
+    paddingVertical: 11,
+    paddingHorizontal: 12,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  buttonRow:{
+    flexDirection: 'row',
+  },
+
+  ButtonText: {
+    marginRight:5,
+    marginTop:3,
     fontSize: 14,
     lineHeight: 16,
     color: '#FFFFFF',
     letterSpacing: 0.12,
-    alignSelf: 'center',
-    fontWeight: "bold",
-    alignItems: "center",
-    justifyContent: "center",
-
+    fontFamily: 'Poppins-SemiBold',
   },
-
-  appButtonContainer: {
-    flex: 0.8,
-    backgroundColor: "#4EBDD6",
-    borderRadius: 25,
-    paddingVertical: 10,
-    paddingHorizontal: 12,
-    alignItems: "center",
-    justifyContent: "center",
-
-  },
-
-  iconContainer:{
-    flex:2
-  }
 
 });

@@ -5,16 +5,22 @@ import { Card, Paragraph } from "react-native-paper";
 import HeartFavorite from "../heart-favorite/heart-favorite";
 import StarsRating from "../../../../components/stars-rating/stars-rating";
 import ButtonBook from "../../../../components/button-book/button-book";
+import { useNavigation } from "@react-navigation/native";
 
-const CardProfile = (props:any) => {
+interface CardProfileProps{
+  //professional: ProfessionalModel,
+  //screen: string
+}
 
-  const pro = props.professional;
+const CardProfile = ({ professional, screen }) => {
+
+  const navigation = useNavigation();
 
   return(
     <View style={styles.container}>
       <Card>
-
-        <TouchableOpacity onPress={() => {}}>
+        <View>
+        <TouchableOpacity onPress={() => navigation.navigate(screen, {id: professional.id})}>
           <Card.Cover source={{ uri: 'https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425_960_720.png' }} style={styles.cardCover}/>
         </TouchableOpacity>
 
@@ -22,19 +28,18 @@ const CardProfile = (props:any) => {
           <HeartFavorite/>
         </View>
 
-        <View>
+
           <View style={styles.starContainer}>
             <View style={styles.reviews}>
-              <StarsRating/>
+              <StarsRating ratings={professional.stars}/>
               <Text style={styles.numberRatings}> Reviews</Text>
             </View>
           </View>
         </View>
 
-
         <View>
-          <Text style={styles.subtitle}>occupation </Text>
-          <Text style={styles.textTitle}>firstname lastname</Text>
+          <Text style={styles.subtitle}>{professional.occupation} </Text>
+          <Text style={styles.textTitle}>{professional.last_name} {professional.first_name}</Text>
         </View>
 
         <Card.Content>
@@ -53,14 +58,14 @@ const CardProfile = (props:any) => {
                 name='map-marker'
                 type='font-awesome'
                 color='#555B70'/>
-              <Paragraph style={styles.locationText}>ville</Paragraph>
+              <Paragraph style={styles.locationText}>{professional.city}</Paragraph>
             </View>
           </View>
         </Card.Content>
 
         <Card.Actions>
           <View style={styles.buttonContainer}>
-           <ButtonBook/>
+           <ButtonBook text='Book' screen='Profile' id={professional.id}/>
           </View>
         </Card.Actions>
 
@@ -78,11 +83,10 @@ const styles = StyleSheet.create({
     flex:0.5,
     flexDirection: "column",
     margin: 8,
-    borderRadius:30
+    borderRadius:10,
   },
 
   locationContainer:{
-
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 8,
@@ -98,6 +102,7 @@ const styles = StyleSheet.create({
     lineHeight: 15,
     marginLeft:5,
     color:'#555B70',
+    fontFamily: 'Poppins-Light',
   },
 
   buttonContainer:{
@@ -116,7 +121,7 @@ const styles = StyleSheet.create({
   starContainer:{
     flex: 1,
     position: "absolute",
-    top: 110, left: 0, right: 0, bottom: 0, justifyContent: 'center',
+    top: 115, left: 0, right: 0, bottom: 0, justifyContent: 'center',
     backgroundColor: '#9196AA',
     opacity: 0.8,
     borderBottomStartRadius: 10,
@@ -125,14 +130,17 @@ const styles = StyleSheet.create({
 
   textTitle:{
     flex: 1,
+    fontFamily: 'Poppins-Bold',
     fontSize: 15,
     lineHeight: 18,
-    fontWeight: "bold",
     margin: 5
   },
 
   cardCover:{
-    borderRadius:10,
+    borderTopRightRadius: 5,
+    borderTopLeftRadius: 5,
+    borderBottomRightRadius: 10,
+    borderBottomLeftRadius: 10,
     height:150
   },
 
@@ -146,6 +154,7 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginTop: 5,
     color: "#4EBDD6",
+    fontFamily: 'Poppins-Light',
     fontSize: 10,
     lineHeight: 12,
   },
@@ -158,6 +167,7 @@ const styles = StyleSheet.create({
 
   numberRatings:{
     fontSize: 12,
+    fontFamily: 'Poppins-Light',
     color: "white",
     marginRight:5,
   },

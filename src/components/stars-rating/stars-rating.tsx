@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Image, SafeAreaView, StyleSheet, TouchableOpacity, View } from "react-native";
 
-const StarsRating = (props:any) => {
+interface StarsRatingProps{
+  ratings: number;
+}
 
+const StarsRating = (props:StarsRatingProps) => {
 
 
   const [defaultRating, setDefaultRating] = useState(props.ratings);
@@ -10,31 +13,20 @@ const StarsRating = (props:any) => {
   const [maxRating, setMaxRating] = useState([1, 2, 3, 4, 5]);
 
 
-  const starImageFilled =
-    'https://raw.githubusercontent.com/AboutReact/sampleresource/master/star_filled.png';
-
-  const starImageCorner =
-    'https://raw.githubusercontent.com/AboutReact/sampleresource/master/star_corner.png';
-
   const CustomRatingBar = () => {
     return (
       <View style={styles.customRatingBarStyle}>
-        {maxRating.map((item, key) => {
+        {maxRating.map((item) => {
           return (
-            <TouchableOpacity
-              activeOpacity={0.7}
-              key={item}
-              onPress={() => {
-              }}>
               <Image
                 style={styles.starImageStyle}
                 source={
                   item <= defaultRating
-                    ? {uri: starImageFilled}
-                    : {uri: starImageCorner}
+                    ? require('./img/star_filled.png')
+                    : require('./img/star_corner.png')
+
                 }
               />
-            </TouchableOpacity>
           );
         })}
       </View>

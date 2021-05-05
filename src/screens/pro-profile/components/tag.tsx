@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Icon } from "react-native-elements";
 
@@ -6,7 +6,7 @@ interface TagProps {
   text: string;
 }
 
-const Tag = (props: TagProps) => {
+const Tag: FC<TagProps> = (props: TagProps) => {
   return(
     <View style={styles.container}>
       <Icon

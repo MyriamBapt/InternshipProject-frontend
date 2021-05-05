@@ -11,7 +11,7 @@ const SimpleButton = (props: SimpleButtonProps) => {
     <TouchableOpacity
       style={styles.appButtonContainer}
       onPress={() => {}}>
-      <Text style={styles.appButtonText}> texte </Text>
+      <Text style={styles.appButtonText}> {props.text} </Text>
     </TouchableOpacity>
   );
 };
@@ -20,14 +20,13 @@ export default SimpleButton;
 
 const styles = StyleSheet.create({
   appButtonText: {
-    fontSize: 14,
+    fontSize: 15,
     lineHeight: 16,
     color: '#FFFFFF',
     letterSpacing: 0.12,
     alignSelf: 'center',
     fontFamily:'Poppins-SemiBold',
-    alignItems: "center",
-    justifyContent: "center",
+    textAlign: "center",
     paddingTop: 8,
     paddingBottom: 8,
   },

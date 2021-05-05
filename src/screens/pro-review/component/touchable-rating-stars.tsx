@@ -1,16 +1,20 @@
-import React, {useState} from 'react';
+import React, { FC, useState } from "react";
 import {
   SafeAreaView,
   StyleSheet,
   View,
-  Text,
   Image,
   TouchableOpacity,
 } from 'react-native';
 
-const TouchableRatingStars = () => {
+interface TouchableRatingStarsProps{
+  // need props for stars ?
+}
 
-  const [defaultRating, setDefaultRating] = useState(2);
+
+const TouchableRatingStars: FC<TouchableRatingStarsProps> = (props:TouchableRatingStarsProps) => {
+
+  const [defaultRating, setDefaultRating] = useState(5);
 
   const [maxRating, setMaxRating] = useState([1, 2, 3, 4, 5]);
 

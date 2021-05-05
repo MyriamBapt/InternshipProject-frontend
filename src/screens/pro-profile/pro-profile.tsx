@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import { FlatList, Image, View } from "react-native";
+import { FlatList, Image, ScrollView, View } from "react-native";
 import { Text, TouchableOpacity } from "react-native";
 import styles from "./styles";
 import ButtonBook from "../../components/button-book/button-book";
@@ -50,7 +50,9 @@ const ProProfile: FC<ProProfileProps> = (props: ProProfileProps) => {
 
       <View style={styles.top}>
       </View>
+
       <View style={styles.container}>
+        <ScrollView>
         <View style={styles.header}>
           <View style={styles.starContainer}>
             <Image source={{uri : 'https://raw.githubusercontent.com/AboutReact/sampleresource/master/star_filled.png'}} style={styles.star}/>
@@ -130,7 +132,9 @@ const ProProfile: FC<ProProfileProps> = (props: ProProfileProps) => {
           <ButtonBook text='Book an appointment'/>
         </View>
 
+        </ScrollView>
       </View>
+
     </View>
   )
 };

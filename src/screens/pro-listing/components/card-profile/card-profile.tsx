@@ -12,7 +12,7 @@ interface CardProfileProps{
   screen: string
 }
 
-const CardProfile: FC<CardProfileProps> = (props: any) => {
+const CardProfile: FC<CardProfileProps> = (props: CardProfileProps) => {
 
   const {professional, screen} = props;
 

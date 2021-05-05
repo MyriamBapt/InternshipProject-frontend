@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Text, TextInput, View } from "react-native";
+import { ScrollView, Text, TextInput, View } from "react-native";
 import AppointmentInfoTop from "../../components/appointment-info-top/appointment-info-top";
 import styles from "./styles";
 import SimpleButton from "../../components/simple-button/simple-button";
@@ -12,7 +12,7 @@ interface AppointmentPaymentProps {
 const AppointmentPayment: FC<AppointmentPaymentProps> = (props: AppointmentPaymentProps) => {
   return(
     <View style={styles.container}>
-
+      <ScrollView>
       <View style={styles.topContainer}>
         <AppointmentInfoTop/>
       </View>
@@ -68,6 +68,7 @@ const AppointmentPayment: FC<AppointmentPaymentProps> = (props: AppointmentPayme
         </View>
 
       </View>
+      </ScrollView>
     </View>
   );
 };

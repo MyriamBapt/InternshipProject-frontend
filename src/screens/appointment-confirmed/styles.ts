@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
 
   buttonContainer:{
     flex: 2,
-    marginBottom: -10
+    justifyContent: "center"
   },
 
 })

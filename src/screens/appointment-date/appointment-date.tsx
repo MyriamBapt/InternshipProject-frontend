@@ -1,11 +1,15 @@
-import React, { FC } from "react";
-import { Dimensions, SafeAreaView, ScrollView, Text, View } from "react-native";
+import React, { FC, useState } from "react";
+import {SafeAreaView, ScrollView, Text, View } from "react-native";
 import styles from "./styles";
 import SimpleButton from "../../components/simple-button/simple-button";
 import AppointmentInfosBottom from "../../components/appointment-infos-bottom/appointment-infos-bottom";
-import CalendarDateTime from "./components/calendar-date-time";
+import CalendarDateTime from "./components/calendar-date-time/calendar-date-time";
 import RoundAvatar from "../../components/round-avatar/round-avatar";
 import { Icon } from "react-native-elements";
+
+import { ProfessionalModel } from "../../api/models/professional.model";
+import { IProfState } from "../../store/reducers/profs-reducer";
+import { useSelector } from "react-redux";
 
 
 interface AppointmentDateProps{
@@ -13,6 +17,19 @@ interface AppointmentDateProps{
 }
 
 const AppointmentDate: FC<AppointmentDateProps> = (props: AppointmentDateProps) => {
+
+  //const { id } = props.route.params;
+  const id = 9;
+  // @ts-ignore
+  const prof: ProfessionalModel = useSelector((state: IProfState) => state.profs.profs.find(prof => prof.id === id));
+
+  const [dataSelected, setDataSelected]= useState(true);
+
+  const dataSelectedHandler: any = () => {
+    //check date and time
+    // dispatch it
+    //set dataSelected true
+  }
 
   return(
     <SafeAreaView style={styles.safeArea}>
@@ -39,7 +56,7 @@ const AppointmentDate: FC<AppointmentDateProps> = (props: AppointmentDateProps) 
           </View>
           <Text style={styles.textChosenData}>Your appointment is on XX/XX at XX:XX </Text>
           <View style={styles.buttonContainer}>
-            <SimpleButton text='Done'/>
+            {dataSelected ? <SimpleButton text='Done' screen='Appointment-info' id={id}/> : null}
           </View>
       </View>
 

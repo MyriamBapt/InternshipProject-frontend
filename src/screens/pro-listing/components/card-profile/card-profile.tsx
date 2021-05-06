@@ -1,14 +1,19 @@
 import React, { FC } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
 import { Icon } from "react-native-elements";
 import { Card, Paragraph } from "react-native-paper";
+
 import HeartFavorite from "../heart-favorite/heart-favorite";
 import StarsRating from "../../../../components/stars-rating/stars-rating";
 import ButtonBook from "../../../../components/button-book/button-book";
-import { useNavigation } from "@react-navigation/native";
+
+import { ProfessionalModel } from '../../../../api/models/professional.model';
+
 
 interface CardProfileProps{
-  professional: any,
+  professional: ProfessionalModel,
   screen: string
 }
 
@@ -33,7 +38,7 @@ const CardProfile: FC<CardProfileProps> = (props: CardProfileProps) => {
 
           <View style={styles.starContainer}>
             <View style={styles.reviews}>
-              <StarsRating ratings={professional.stars}/>
+              <StarsRating ratings={professional.review.stars}/>
               <Text style={styles.numberRatings}> Reviews</Text>
             </View>
           </View>
@@ -41,7 +46,7 @@ const CardProfile: FC<CardProfileProps> = (props: CardProfileProps) => {
 
         <View>
           <Text style={styles.subtitle}>{professional.occupation} </Text>
-          <Text style={styles.textTitle}>{professional.last_name} {professional.first_name}</Text>
+          <Text style={styles.textTitle}>{professional.first_name} {professional.last_name}</Text>
         </View>
 
         <Card.Content>

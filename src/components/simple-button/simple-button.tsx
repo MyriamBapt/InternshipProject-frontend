@@ -1,16 +1,21 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 interface SimpleButtonProps{
-  text: string,
+  text: string;
+  screen: string;
+  id?: number;
 }
 
 const SimpleButton = (props: SimpleButtonProps) => {
 
+  const navigation = useNavigation();
+
   return(
     <TouchableOpacity
       style={styles.appButtonContainer}
-      onPress={() => {}}>
+      onPress={() => {navigation.navigate(props.screen, {id: props.id})}}>
       <Text style={styles.appButtonText}> {props.text} </Text>
     </TouchableOpacity>
   );
@@ -20,7 +25,7 @@ export default SimpleButton;
 
 const styles = StyleSheet.create({
   appButtonText: {
-    fontSize: 15,
+    fontSize: 17,
     lineHeight: 16,
     color: '#FFFFFF',
     letterSpacing: 0.12,
@@ -36,7 +41,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#4EBDD6",
     borderRadius: 25,
     paddingVertical: 10,
-    paddingHorizontal: 12,
+    paddingHorizontal: 10,
     alignItems: "center",
     justifyContent: "center",
   }

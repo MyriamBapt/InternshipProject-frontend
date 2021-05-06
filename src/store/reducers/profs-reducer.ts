@@ -1,16 +1,18 @@
 import { Action, handleActions } from 'redux-actions';
 import * as types from '../types';
 
+import { ProfessionalModel } from '../../api/models/professional.model';
+
 export interface IProfState {
-  profs: any[] | undefined,
-  prof: any | undefined,
+  profs: ProfessionalModel[] | undefined,
+  prof: ProfessionalModel | undefined,
   loading: boolean,
   error: string
 }
 
 const initialState: IProfState = {
   profs: [],
-  prof: {},
+  prof: undefined,
   loading: false,
   error: ''
 }

@@ -1,5 +1,6 @@
 import { IGender } from "../../interfaces/gender";
 import { IReview } from "./review";
+import { ITag } from './tag';
 
 export interface IProfessional {
   id?: number;
@@ -15,5 +16,6 @@ export interface IProfessional {
   followup_meeting_price: number;
   avatar_url: string;
   description: string;
-  review: IReview;
+  review: IReview[];
+  tag: ITag[];
 }

@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
 
   profInfo:{
     flexDirection: 'row',
-    backgroundColor:'#4DC7DD',
+    backgroundColor:'rgba(77, 199, 221, 0.8)',
     borderRadius: 20,
     padding: 10,
     alignItems: 'center',

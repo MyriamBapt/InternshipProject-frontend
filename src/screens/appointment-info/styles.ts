@@ -2,6 +2,10 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
 
+  safeArea:{
+    flex:1
+  },
+
   mainContainer: {
     flex: 1,
     backgroundColor:'#4EBDD6',

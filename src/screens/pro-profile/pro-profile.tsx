@@ -1,19 +1,30 @@
 import React, { FC, useState } from "react";
-import { FlatList, Image, ScrollView, View } from "react-native";
-import { Text, TouchableOpacity } from "react-native";
-import styles from "./styles";
-import ButtonBook from "../../components/button-book/button-book";
-import navigation from "../../router/navigation";
+import { FlatList, Image, ScrollView, View, Text, TouchableOpacity } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+
 import { Icon } from "react-native-elements";
+
+import { useNavigation } from "@react-navigation/native";
+import navigation from "../../router/navigation";
+
 import RoundAvatar from "../../components/round-avatar/round-avatar";
 import Tag from "./components/tag";
-import { useNavigation } from "@react-navigation/native";
+import ButtonBook from "../../components/button-book/button-book";
+import styles from "./styles";
+
+import { ProfessionalModel } from "../../api/models/professional.model";
+import { IProfState } from "../../store/reducers/profs-reducer";
 
 interface ProProfileProps {
-  //proData: ProModel;
+  route: any,
+  screen: string
 }
 
 const ProProfile: FC<ProProfileProps> = (props: ProProfileProps) => {
+  const { id } = props.route.params;
+  // @ts-ignore
+  const prof: ProfessionalModel = useSelector((state: IProfState) => state.profs.profs.find(prof => prof.id === id));
+
 
   const navigation = useNavigation();
   /*const [price, setPrice] = useState(results.first_meeting_price);
@@ -24,7 +35,7 @@ const ProProfile: FC<ProProfileProps> = (props: ProProfileProps) => {
   const [clickedTwo, setClickedTwo] = useState(false);
 
   const ToggleOne = () => {
-    if (clickedOne===false){
+    if (!clickedOne){
       setClickedOne(true);
       setClickedTwo(false);
       //setPrice(results.first_meeting_price);
@@ -45,7 +56,7 @@ const ProProfile: FC<ProProfileProps> = (props: ProProfileProps) => {
     <View style={styles.mainContainer}>
 
       <View style={styles.avatarContainer}>
-        <RoundAvatar photo='need to be added'/>
+        <RoundAvatar photo={prof.avatar_url}/>
       </View>
 
       <View style={styles.top}>
@@ -58,22 +69,22 @@ const ProProfile: FC<ProProfileProps> = (props: ProProfileProps) => {
             <Image source={{uri : 'https://raw.githubusercontent.com/AboutReact/sampleresource/master/star_filled.png'}} style={styles.star}/>
           </View>
           <Text style={styles.stars}> XX/5 </Text>
-          <TouchableOpacity onPress={() =>  navigation.navigate('Reviews' )}>
+          <TouchableOpacity onPress={() =>  navigation.navigate('Reviews')}>
             <Text style={styles.reviews}> reviews</Text>
           </TouchableOpacity>
         </View>
 
         <View style={styles.main}>
-          <Text style={styles.name}>first_name last_name</Text>
+          <Text style={styles.name}>{prof.first_name} {prof.last_name}</Text>
           <View style={styles.subtitle}>
-            <Text style={styles.subtext}>occupation</Text>
+            <Text style={styles.subtext}>{prof.occupation}</Text>
             <Icon
               size={19}
               name='check-circle'
               type='font-awesome'
               color="#4EBDD6"/>
           </View>
-          <Text style={styles.description}>Bonum integritas corporis: misera debilitas. Nunc de hominis summo bono quaeritur; Quis istud, quaeso, nesciebat? Confecta res esset. Si verbum sequimur.</Text>
+          <Text style={styles.description}>{prof.description}</Text>
         </View>
 
         <View style={styles.locations}>
@@ -97,7 +108,7 @@ const ProProfile: FC<ProProfileProps> = (props: ProProfileProps) => {
             </View>
             <View style={styles.locationdetails}>
               <Text style={styles.locationTitle}>Location</Text>
-              <Text style={styles.locationDetailsText}>city</Text>
+              <Text style={styles.locationDetailsText}>{prof.city}</Text>
             </View>
           </View>
         </View>
@@ -124,7 +135,7 @@ const ProProfile: FC<ProProfileProps> = (props: ProProfileProps) => {
               </Text>
             </TouchableOpacity>
           </View>
-          <Text style={styles.price}>price</Text>
+          <Text style={styles.price}>{prof.first_meeting_price}</Text>
           <Text style={styles.description}>duration</Text>
         </View>
 

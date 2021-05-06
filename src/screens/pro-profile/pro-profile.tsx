@@ -1,11 +1,10 @@
 import React, { FC, useState } from "react";
 import { FlatList, Image, ScrollView, View, Text, TouchableOpacity } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import { Icon } from "react-native-elements";
 
 import { useNavigation } from "@react-navigation/native";
-import navigation from "../../router/navigation";
 
 import RoundAvatar from "../../components/round-avatar/round-avatar";
 import Tag from "./components/tag";
@@ -21,14 +20,16 @@ interface ProProfileProps {
 }
 
 const ProProfile: FC<ProProfileProps> = (props: ProProfileProps) => {
+  const navigation = useNavigation();
   const { id } = props.route.params;
   // @ts-ignore
   const prof: ProfessionalModel = useSelector((state: IProfState) => state.profs.profs.find(prof => prof.id === id));
 
+  // @ts-ignore
+  const starsAverage = prof.review.reduce( (prev, current) => {
+    return  prev + current.stars / prof.review.length ;
+  }, 0);
 
-  const navigation = useNavigation();
-  /*const [price, setPrice] = useState(results.first_meeting_price);
-  const [duration, setDuration] = useState('1h - 1h30') */
   const fakeData: string[] = ['tag one','tag two', 'tag three'];
 
   const [clickedOne, setClickedOne] = useState(true);
@@ -44,7 +45,7 @@ const ProProfile: FC<ProProfileProps> = (props: ProProfileProps) => {
   }
 
   const ToggleTwo = () => {
-    if (clickedTwo===false){
+    if (!clickedTwo){
       setClickedTwo(true);
       setClickedOne(false);
       //setPrice(results.followup_meeting_price);
@@ -68,9 +69,9 @@ const ProProfile: FC<ProProfileProps> = (props: ProProfileProps) => {
           <View style={styles.starContainer}>
             <Image source={{uri : 'https://raw.githubusercontent.com/AboutReact/sampleresource/master/star_filled.png'}} style={styles.star}/>
           </View>
-          <Text style={styles.stars}> XX/5 </Text>
+          <Text style={styles.stars}> {starsAverage}/5 </Text>
           <TouchableOpacity onPress={() =>  navigation.navigate('Reviews')}>
-            <Text style={styles.reviews}> reviews</Text>
+            <Text style={styles.reviews}>{prof.review.length} reviews</Text>
           </TouchableOpacity>
         </View>
 

@@ -1,9 +1,9 @@
 import React, { FC, useState } from "react";
-import { ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import styles from "./styles";
 import RoundAvatar from "../../components/round-avatar/round-avatar";
 import { Icon } from "react-native-elements";
-import TouchableRatingStars from "./component/touchable-rating-stars";
+import TouchableRatingStars from "./component/touchable-rating-stars/touchable-rating-stars";
 import SimpleButton from "../../components/simple-button/simple-button";
 
 interface ProReviewPros {
@@ -25,6 +25,8 @@ const tagHandler = () => {
 }
 
   return(
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView contentContainerStyle={{flexGrow:1}}>
     <View style={styles.container}>
       <View style={styles.topContainer}>
 
@@ -102,7 +104,10 @@ const tagHandler = () => {
         </View>
         </ScrollView>
       </View>
-      </View>
+
+    </View>
+      </ScrollView>
+    </SafeAreaView>
 
   );
 };

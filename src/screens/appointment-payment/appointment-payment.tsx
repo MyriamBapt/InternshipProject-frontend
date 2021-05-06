@@ -1,9 +1,8 @@
 import React, { FC } from "react";
-import { ScrollView, Text, TextInput, View } from "react-native";
+import { SafeAreaView, ScrollView, Text, TextInput, View } from "react-native";
 import AppointmentInfoTop from "../../components/appointment-info-top/appointment-info-top";
 import styles from "./styles";
 import SimpleButton from "../../components/simple-button/simple-button";
-
 
 interface AppointmentPaymentProps {
   //prof: ProfModel
@@ -11,8 +10,10 @@ interface AppointmentPaymentProps {
 
 const AppointmentPayment: FC<AppointmentPaymentProps> = (props: AppointmentPaymentProps) => {
   return(
+
+    <SafeAreaView style={styles.safeArea}>
+    <ScrollView contentContainerStyle={{flexGrow:1}}>
     <View style={styles.container}>
-      <ScrollView>
       <View style={styles.topContainer}>
         <AppointmentInfoTop/>
       </View>
@@ -68,8 +69,10 @@ const AppointmentPayment: FC<AppointmentPaymentProps> = (props: AppointmentPayme
         </View>
 
       </View>
-      </ScrollView>
+
     </View>
+    </ScrollView>
+    </SafeAreaView>
   );
 };
 

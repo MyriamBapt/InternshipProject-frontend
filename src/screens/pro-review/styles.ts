@@ -2,6 +2,10 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
 
+  safeArea:{
+    flex:1
+  },
+
   container:{
     flex:1,
     backgroundColor: '#4EBDD6',
@@ -31,7 +35,7 @@ const styles = StyleSheet.create({
 
   profInfo:{
     flexDirection: 'row',
-    backgroundColor:'#EBEEEE',
+    backgroundColor:'rgba(235, 238, 238, 0.8)',
     borderRadius: 10,
     padding: 10,
     alignItems: 'center',
@@ -106,14 +110,14 @@ const styles = StyleSheet.create({
   inputGroup:{
     flex:1,
     marginBottom: 25,
-    marginTop: 10
+    marginVertical: 30
   },
 
   infoInput:{
     borderWidth: 1,
     borderColor: '#d8d8d8',
     height: 80,
-    margin: 12,
+    margin: 10,
     borderRadius: 10,
     textAlignVertical: "top",
   },

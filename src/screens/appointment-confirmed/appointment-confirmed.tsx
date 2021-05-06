@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { ScrollView, Text, View } from "react-native";
+import { SafeAreaView, ScrollView, Text, View } from "react-native";
 import styles from "./styles";
 import AppointmentInfoTop from "../../components/appointment-info-top/appointment-info-top";
 import { Icon } from "react-native-elements";
@@ -11,8 +11,9 @@ interface AppointmentConfirmedProps {
 
 const AppointmentConfirmed: FC<AppointmentConfirmedProps> = (props: AppointmentConfirmedProps) => {
   return(
-
-      <ScrollView contentContainerStyle={styles.container}>
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView contentContainerStyle={{flexGrow:1}}>
+        <View style={styles.container}>
       <View style={styles.topContainer}>
         <AppointmentInfoTop/>
       </View>
@@ -32,8 +33,9 @@ const AppointmentConfirmed: FC<AppointmentConfirmedProps> = (props: AppointmentC
           <SimpleButton text='Done'/>
         </View>
       </View>
+        </View>
       </ScrollView>
-
+    </SafeAreaView>
   );
 };
 

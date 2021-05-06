@@ -3,7 +3,7 @@ import styles from "../../styles";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 interface TouchableTagProps{
-  //
+  text: string;
 }
 
 const TouchableTag: FC<TouchableTagProps> = (props: TouchableTagProps) => {
@@ -25,11 +25,13 @@ const TouchableTag: FC<TouchableTagProps> = (props: TouchableTagProps) => {
     <TouchableOpacity
       style={tagSelected ? styles.tagSelectedStyle : styles.tagUnselectedStyle}
       onPress={tagHandler}>
-      <Text style={tagSelected ? styles.textforTagSelected : styles.textforTagUnselected}>Friendly</Text>
+      <Text style={tagSelected ? styles.textforTagSelected : styles.textforTagUnselected}>{props.text}</Text>
     </TouchableOpacity>
   </View>
   );
 };
+
+export default TouchableTag;
 
 const style = StyleSheet.create({
 
@@ -37,7 +39,7 @@ const style = StyleSheet.create({
     backgroundColor: '#4EBDD6',
     borderRadius:25,
     margin:10,
-    padding: 10,
+    padding: 15,
   },
 
   textforTagSelected:{
@@ -50,7 +52,7 @@ const style = StyleSheet.create({
     backgroundColor:'#FFFFFF',
     borderRadius:25,
     margin:10,
-    padding: 10,
+    padding: 15,
   },
 
   textforTagUnselected:{

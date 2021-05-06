@@ -5,6 +5,7 @@ import RoundAvatar from "../../components/round-avatar/round-avatar";
 import { Icon } from "react-native-elements";
 import TouchableRatingStars from "./component/touchable-rating-stars/touchable-rating-stars";
 import SimpleButton from "../../components/simple-button/simple-button";
+import TouchableTag from "./component/touchable-tag/touchable-tag";
 
 interface ProReviewPros {
   //prof: ProfModel
@@ -61,31 +62,13 @@ const tagHandler = () => {
         <Text style={styles.textTellUsMore}>Please tell us more</Text>
 
           <View style={styles.tagRow}>
-            <TouchableOpacity
-              style={tagSelected ? styles.tagSelectedStyle : styles.tagUnselectedStyle}
-              onPress={tagHandler}>
-              <Text style={tagSelected ? styles.textforTagSelected : styles.textforTagUnselected}>Friendly</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={tagSelected ? styles.tagSelectedStyle : styles.tagUnselectedStyle}
-              onPress={tagHandler}>
-              <Text style={tagSelected ? styles.textforTagSelected : styles.textforTagUnselected}>Understanding</Text>
-            </TouchableOpacity>
+            <TouchableTag text='Friendly'/>
+            <TouchableTag text='Understanding'/>
           </View>
 
           <View style={styles.tagRow}>
-            <TouchableOpacity
-              style={tagSelected ? styles.tagSelectedStyle : styles.tagUnselectedStyle}
-              onPress={tagHandler}>
-              <Text style={tagSelected ? styles.textforTagSelected : styles.textforTagUnselected}>Ponctuality</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={tagSelected ? styles.tagSelectedStyle : styles.tagUnselectedStyle}
-              onPress={tagHandler}>
-              <Text style={tagSelected ? styles.textforTagSelected : styles.textforTagUnselected}>Efficiency</Text>
-            </TouchableOpacity>
+            <TouchableTag text='Ponctual'/>
+            <TouchableTag text='Efficient'/>
           </View>
         </View>
 
@@ -100,7 +83,7 @@ const tagHandler = () => {
         </View>
 
         <View style={styles.buttonContainer}>
-          <SimpleButton text='Done'/>
+          <SimpleButton text='Done' screen='Professionals'/>
         </View>
         </ScrollView>
       </View>

@@ -2,6 +2,10 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
 
+  safeArea:{
+    flex:1
+  },
+
   mainContainer: {
     flex: 1,
     backgroundColor:'#4EBDD6',
@@ -24,21 +28,22 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor:'#4EBDD6',
     alignItems: "center",
+    justifyContent: "center",
   },
 
   buttonContainer:{
     flex:0.5,
-    justifyContent: "center"
+    justifyContent: "center",
   },
 
   profInfo:{
     flexDirection: 'row',
-    backgroundColor:'#EBEEEE',
+    backgroundColor:'rgba(235, 238, 238, 0.8)',
     borderRadius: 10,
     padding: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    margin: 15
+    margin: 15,
   },
 
   profIdentity:{
@@ -78,7 +83,6 @@ const styles = StyleSheet.create({
     textAlign:'center',
     marginBottom: 10,
   },
-
 })
 
 export default styles;

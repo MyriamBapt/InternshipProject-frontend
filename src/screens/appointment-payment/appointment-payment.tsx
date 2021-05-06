@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { SafeAreaView, ScrollView, Text, TextInput, View } from "react-native";
 import AppointmentInfoTop from "../../components/appointment-info-top/appointment-info-top";
 import styles from "./styles";
@@ -9,6 +9,15 @@ interface AppointmentPaymentProps {
 }
 
 const AppointmentPayment: FC<AppointmentPaymentProps> = (props: AppointmentPaymentProps) => {
+
+  const [dataValidated, setDataValidated]= useState(true);
+
+  const paymentValidationHandler: any = () => {
+    //check infos
+    //dispatch it + stripe
+    //set dataValidated true
+  }
+
   return(
 
     <SafeAreaView style={styles.safeArea}>
@@ -65,7 +74,7 @@ const AppointmentPayment: FC<AppointmentPaymentProps> = (props: AppointmentPayme
         </View>
 
         <View style={styles.buttonContainer}>
-          <SimpleButton text='Confirm'/>
+          {dataValidated ? <SimpleButton text='Confirm' screen='Appointment-confirmed'/> : null}
         </View>
 
       </View>

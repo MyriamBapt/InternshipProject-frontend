@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { SafeAreaView, ScrollView, Text, TextInput, View } from "react-native";
 import SimpleButton from "../../components/simple-button/simple-button";
 import AppointmentInfosBottom from "../../components/appointment-infos-bottom/appointment-infos-bottom";
@@ -12,6 +12,13 @@ interface AppointmentInfoProps {
 const AppointmentInfo: FC<AppointmentInfoProps> = (props: AppointmentInfoProps) => {
 
   const [text, onChangeText] = React.useState("Useless Text");
+  const [dataValidated, setDataValidated]= useState(true);
+
+  const dataValidationHandler: any = () => {
+    //check infos
+    // dispatch it
+    //set dataValidated true
+  }
 
   return(
 
@@ -84,7 +91,7 @@ const AppointmentInfo: FC<AppointmentInfoProps> = (props: AppointmentInfoProps) 
           </View>
 
           <View style={styles.buttonContainer}>
-            <SimpleButton text='Next'/>
+            {dataValidated ? <SimpleButton text='Next' screen='Appointment-payment'/> : null}
           </View>
       </View>
 

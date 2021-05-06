@@ -6,6 +6,7 @@ import SearchBar from "./components/search-bar/search-bar";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProfsRequest } from "../../store/actions";
 import { IProfState } from "../../store/reducers/profs-reducer";
+import { ProfessionalModel } from '../../api/models/professional.model';
 
 interface ProListingProps {
   //proData: ProModel; TO DO
@@ -15,7 +16,7 @@ const ProListing: FC<ProListingProps> = (props:ProListingProps) => {
 
   const dispatch = useDispatch();
   // @ts-ignore
-  const profs = useSelector((state: IProfState) => state.profs.profs);
+  const profs: ProfessionalModel[] = useSelector((state: IProfState) => state.profs.profs);
   // @ts-ignore
   const error = useSelector((state: IProfState) => state.profs.error);
   // @ts-ignore
@@ -43,8 +44,8 @@ const ProListing: FC<ProListingProps> = (props:ProListingProps) => {
         <FlatList
           data={profs}
           numColumns={2}
-          keyExtractor={(item) => item.id}
-          renderItem={({item}) => <CardProfile key={item.id} professional={item}  screen='Profile' />}
+          keyExtractor={(item: ProfessionalModel, index: number) => item.id}
+          renderItem={({item}) => <CardProfile professional={item}  screen='Profile' />}
         />
       </View>
     </View>

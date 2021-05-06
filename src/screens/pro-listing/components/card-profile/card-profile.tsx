@@ -23,6 +23,11 @@ const CardProfile: FC<CardProfileProps> = (props: CardProfileProps) => {
 
   const navigation = useNavigation();
 
+  // @ts-ignore
+  const starsAverage = professional.review.reduce( (prev, current) => {
+    return  prev + current.stars / professional.review.length ;
+  }, 0);
+
   return(
     <View style={styles.container}>
       <Card>
@@ -38,8 +43,8 @@ const CardProfile: FC<CardProfileProps> = (props: CardProfileProps) => {
 
           <View style={styles.starContainer}>
             <View style={styles.reviews}>
-              <StarsRating ratings={professional.review.stars}/>
-              <Text style={styles.numberRatings}> Reviews</Text>
+              <StarsRating ratings={starsAverage}/>
+              <Text style={styles.numberRatings}>{professional.review.length} Reviews</Text>
             </View>
           </View>
         </View>

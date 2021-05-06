@@ -1,10 +1,12 @@
 import React, { FC, useEffect, useState } from "react";
 import { View, ActivityIndicator, StyleSheet, FlatList, Text } from "react-native";
-import CardProfile from "./components/card-profile/card-profile";
-import SearchBar from "./components/search-bar/search-bar";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProfsRequest } from "../../store/actions";
+
+import CardProfile from "./components/card-profile/card-profile";
+import SearchBar from "./components/search-bar/search-bar";
+
 import { IProfState } from "../../store/reducers/profs-reducer";
 import { ProfessionalModel } from '../../api/models/professional.model';
 
@@ -28,6 +30,7 @@ const ProListing: FC<ProListingProps> = (props:ProListingProps) => {
 
   const [searchTerm, setSearchTerm] = useState('');
 
+  // @ts-ignore
   return(
     <View style={styles.container}>
       <View>
@@ -44,8 +47,8 @@ const ProListing: FC<ProListingProps> = (props:ProListingProps) => {
         <FlatList
           data={profs}
           numColumns={2}
-          keyExtractor={(item: ProfessionalModel, index: number) => item.id}
-          renderItem={({item}) => <CardProfile professional={item}  screen='Profile' />}
+          keyExtractor={((item: ProfessionalModel) => item.id.toString())}
+          renderItem={({item}) => <CardProfile key={item.id} professional={item}  screen='Profile' />}
         />
       </View>
     </View>

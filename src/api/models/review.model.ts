@@ -5,12 +5,13 @@ export class ReviewModel {
   review: string;
   stars: number;
   date_hour: string;
-
+  length: any;
 
   constructor(review: IReview) {
     this.id = review.id;
     this.review = review.review;
     this.stars = review.stars;
     this.date_hour = review.date_hour;
+    this.length = review.length;
   }
 }

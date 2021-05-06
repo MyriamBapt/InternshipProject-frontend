@@ -2,6 +2,7 @@ import { IProfessional } from "../interfaces/professional";
 
 import { IGender } from "../../interfaces/gender";
 import { IReview } from "../interfaces/review";
+import { ITag } from '../interfaces/tag';
 
 export class ProfessionalModel {
   id?: number;
@@ -17,7 +18,8 @@ export class ProfessionalModel {
   followup_meeting_price: number;
   avatar_url: string;
   description: string;
-  review: IReview;
+  review: IReview[];
+  tag: ITag[];
 
   constructor(prof: IProfessional) {
     this.id = prof.id;
@@ -34,5 +36,6 @@ export class ProfessionalModel {
     this.avatar_url = prof.avatar_url;
     this.description = prof.description;
     this.review = prof.review;
+    this.tag = prof.tag;
   }
 }

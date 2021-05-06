@@ -30,7 +30,7 @@ const AppointmentConfirmed: FC<AppointmentConfirmedProps> = (props: AppointmentC
           <Text style={styles.textThankYou}>Thank you.</Text>
         </View>
         <View style={styles.buttonContainer}>
-          <SimpleButton text='Done'/>
+          <SimpleButton text='Done' screen='Professionals'/>
         </View>
       </View>
         </View>

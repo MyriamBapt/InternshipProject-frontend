@@ -3,16 +3,30 @@ import { SafeAreaView, ScrollView, Text, TextInput, View } from "react-native";
 import SimpleButton from "../../components/simple-button/simple-button";
 import AppointmentInfosBottom from "../../components/appointment-infos-bottom/appointment-infos-bottom";
 import styles from "./styles";
+import { ProfessionalModel } from "../../api/models/professional.model";
+import { useSelector } from "react-redux";
+import { IProfState } from "../../store/reducers/profs-reducer";
+import { useNavigation } from "@react-navigation/native";
 
 
 interface AppointmentInfoProps {
-  //user: UserModel
+  //user: UserModel,
+  route: any,
 }
 
 const AppointmentInfo: FC<AppointmentInfoProps> = (props: AppointmentInfoProps) => {
 
   const [text, onChangeText] = React.useState("Useless Text");
   const [dataValidated, setDataValidated]= useState(true);
+
+  const navigation = useNavigation();
+  const { id } = props.route.params;
+  //attention: need to come from previous screen otherwise useSelector returns undefined (need dispatch from app-date screen)
+  // @ts-ignore
+  const prof: ProfessionalModel = useSelector((state: IProfState) => state.profs.profs.find(prof => prof.id === id));
+
+
+
 
   const dataValidationHandler: any = () => {
     //check infos

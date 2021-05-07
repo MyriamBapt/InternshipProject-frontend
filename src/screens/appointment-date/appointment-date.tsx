@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import {SafeAreaView, ScrollView, Text, View } from "react-native";
 import styles from "./styles";
 import SimpleButton from "../../components/simple-button/simple-button";
@@ -9,7 +9,8 @@ import { Icon } from "react-native-elements";
 
 import { ProfessionalModel } from "../../api/models/professional.model";
 import { IProfState } from "../../store/reducers/profs-reducer";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllProfsRequest } from "../../store/actions";
 
 
 interface AppointmentDateProps{
@@ -18,10 +19,23 @@ interface AppointmentDateProps{
 
 const AppointmentDate: FC<AppointmentDateProps> = (props: AppointmentDateProps) => {
 
+  useEffect( () => {
+    dispatch(fetchAllProfsRequest());
+  }, []);
+
   //const { id } = props.route.params;
   const id = 9;
+  const dispatch = useDispatch();
+
+  useEffect( () => {
+    dispatch(fetchAllProfsRequest());
+  }, []);
+
+  //attention: useEffect is only here fo testing + doesn't work when going to another page then going back
   // @ts-ignore
   const prof: ProfessionalModel = useSelector((state: IProfState) => state.profs.profs.find(prof => prof.id === id));
+
+
 
   const [dataSelected, setDataSelected]= useState(true);
 
@@ -39,9 +53,9 @@ const AppointmentDate: FC<AppointmentDateProps> = (props: AppointmentDateProps) 
           <View style={styles.profInfo}>
             <RoundAvatar photo='https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425_960_720.png'/>
             <View style={styles.profIdentity}>
-              <Text style={styles.name}>Nom Prénom</Text>
+              <Text style={styles.name}>Nom prénom</Text>
               <View style={styles.occupationRow}>
-                <Text style={styles.occupation}>Occupation</Text>
+                <Text style={styles.occupation}>occupation</Text>
                 <Icon
                 size={19}
                 name='check-circle'

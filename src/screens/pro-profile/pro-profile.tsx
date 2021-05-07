@@ -144,7 +144,7 @@ const ProProfile: FC<ProProfileProps> = (props: ProProfileProps) => {
         </View>
 
         <View style={styles.button}>
-          <ButtonBook text='Book an appointment'/>
+          <ButtonBook text='Book an appointment' id={prof.id} screen={'Appointment-date'}/>
         </View>
 
         </ScrollView>

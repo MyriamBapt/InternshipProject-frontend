@@ -30,28 +30,31 @@ const ProProfile: FC<ProProfileProps> = (props: ProProfileProps) => {
     return  prev + current.stars / prof.review.length ;
   }, 0);
 
-  const fakeData: string[] = ['tag one','tag two', 'tag three'];
+  const [firstReport, setFirstReport] = useState(true);
+  const [followUp, setFollowUp] = useState(false);
 
-  const [clickedOne, setClickedOne] = useState(true);
-  const [clickedTwo, setClickedTwo] = useState(false);
-
-  const ToggleOne = () => {
-    if (!clickedOne){
-      setClickedOne(true);
-      setClickedTwo(false);
-      //setPrice(results.first_meeting_price);
-      //setDuration('1h - 1h30')
+  const ToggleButtonsHandler = () => {
+    if (!firstReport){
+      setFirstReport(true);
+      setFollowUp(false);
+    } else {
+      setFirstReport(false);
+      setFollowUp(true);
     }
   }
 
-  const ToggleTwo = () => {
-    if (!clickedTwo){
-      setClickedTwo(true);
-      setClickedOne(false);
-      //setPrice(results.followup_meeting_price);
-      //setDuration('1h')
-    }
-  }
+  //const friendlyTotal = prof.tag.find( tag => tag.friendly);
+  const friendlyTotal = prof.tag.filter(tag => tag.friendly).length / prof.tag.length * 100;
+  const understandingTotal = prof.tag.filter(tag => tag.understanding).length / prof.tag.length * 100;
+  const punctualityTotal = prof.tag.filter(tag => tag.punctuality).length / prof.tag.length * 100;
+  const efficiencyTotal = prof.tag.filter(tag => tag.efficiency).length / prof.tag.length * 100;
+
+  const tags = [
+    { Friendly: friendlyTotal },
+    { Understanding : understandingTotal },
+    { Punctuality : punctualityTotal },
+    { Efficiency : efficiencyTotal }
+  ];
 
   return(
     <View style={styles.mainContainer}>
@@ -116,27 +119,27 @@ const ProProfile: FC<ProProfileProps> = (props: ProProfileProps) => {
 
         <View style={styles.flatlistContainer}>
           <FlatList
-            data={fakeData}
+            data={tags}
             numColumns={2}
             columnWrapperStyle={{justifyContent: 'space-between'}}
-            renderItem={({item}) => <Tag text={item} />}
+            renderItem={({item}) => <Tag item={item} /> }
             style={styles.flatlist}/>
         </View>
 
         <View style={styles.priceAndDuration}>
           <View style={styles.ToggleContainer}>
-            <TouchableOpacity style={clickedOne ? styles.buttonpressed : styles.buttonContainer} onPress={ToggleOne}>
+            <TouchableOpacity style={firstReport ? styles.buttonpressed : styles.buttonContainer} onPress={ToggleButtonsHandler}>
               <Text style={styles.appButtonText}>
                 First Report
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity style={clickedTwo ? styles.buttonpressed : styles.buttonContainer} onPress={ToggleTwo}>
+            <TouchableOpacity style={followUp ? styles.buttonpressed : styles.buttonContainer} onPress={ToggleButtonsHandler}>
               <Text style={styles.appButtonText}>
                 Follow-up
               </Text>
             </TouchableOpacity>
           </View>
-          <Text style={styles.price}>{prof.first_meeting_price}</Text>
+          <Text style={styles.price}>{firstReport ? prof.first_meeting_price : prof.followup_meeting_price}</Text>
           <Text style={styles.description}>duration</Text>
         </View>
 

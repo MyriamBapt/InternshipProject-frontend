@@ -9,16 +9,16 @@ interface ButtonBookProps{
   id: number;
 }
 
-const ButtonBook: FC<ButtonBookProps>= (props: ButtonBookProps) => {
+const ButtonBook: FC<ButtonBookProps>= ({ text, screen, id  }) => {
 
   const navigation = useNavigation();
 
   return(
     <TouchableOpacity
       style={styles.ButtonContainer}
-      onPress={() => navigation.navigate(props.screen, {id: props.id})}>
+      onPress={() => navigation.navigate(screen, {id: id})}>
       <View style={styles.buttonRow}>
-        <Text style={styles.ButtonText}>{props.text}</Text>
+        <Text style={styles.ButtonText}>{text}</Text>
         <Icon
           size={17}
           name='calendar'

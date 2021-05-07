@@ -20,7 +20,8 @@ const AppointmentInfo: FC<AppointmentInfoProps> = (props: AppointmentInfoProps) 
   const [dataValidated, setDataValidated]= useState(true);
 
   const navigation = useNavigation();
-  const { id } = props.route.params;
+  //const { id } = props.route.params;
+  const id = 9;
   //attention: need to come from previous screen otherwise useSelector returns undefined (need dispatch from app-date screen)
   // @ts-ignore
   const prof: ProfessionalModel = useSelector((state: IProfState) => state.profs.profs.find(prof => prof.id === id));

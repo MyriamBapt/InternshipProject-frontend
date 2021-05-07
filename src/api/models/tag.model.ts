@@ -6,7 +6,7 @@ export class TagModel {
   understanding: boolean;
   punctuality: boolean;
   efficiency: boolean;
-
+  length: any;
 
   constructor(tag: ITag) {
     this.id = tag.id;
@@ -14,5 +14,6 @@ export class TagModel {
     this.understanding = tag.understanding;
     this.punctuality = tag.punctuality;
     this.efficiency = tag.efficiency;
+    this.length = tag.length;
   }
 }

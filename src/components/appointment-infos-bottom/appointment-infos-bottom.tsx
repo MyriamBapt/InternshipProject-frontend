@@ -7,6 +7,13 @@ interface AppointmentInfosBottomProps{
 }
 
 const AppointmentInfosBottom = (props: AppointmentInfosBottomProps) => {
+
+  // need id => from parent ?
+  //(need to be tested))
+  // @ts-ignore
+  //const prof: ProfessionalModel = useSelector((state: IProfState) => state.profs.profs.find(prof => prof.id === id));
+
+
   return(
     <View style={styles.container}>
       <View style={styles.infosAndPrice}>

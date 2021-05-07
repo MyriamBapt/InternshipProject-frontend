@@ -15,27 +15,17 @@ import { fetchAllProfsRequest } from "../../store/actions";
 
 interface AppointmentDateProps{
   //prof: ProfModel;
+  route: any;
 }
 
 const AppointmentDate: FC<AppointmentDateProps> = (props: AppointmentDateProps) => {
-
-  useEffect( () => {
-    dispatch(fetchAllProfsRequest());
-  }, []);
-
+  // NEED TO ADD VARIABLES ONCE IT WILL WORK PROPERLY (pro profile connected)
   //const { id } = props.route.params;
   const id = 9;
   const dispatch = useDispatch();
 
-  useEffect( () => {
-    dispatch(fetchAllProfsRequest());
-  }, []);
-
-  //attention: useEffect is only here fo testing + doesn't work when going to another page then going back
   // @ts-ignore
   const prof: ProfessionalModel = useSelector((state: IProfState) => state.profs.profs.find(prof => prof.id === id));
-
-
 
   const [dataSelected, setDataSelected]= useState(true);
 

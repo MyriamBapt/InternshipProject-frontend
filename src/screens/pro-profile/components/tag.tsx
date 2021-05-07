@@ -3,10 +3,13 @@ import { StyleSheet, Text, View } from "react-native";
 import { Icon } from "react-native-elements";
 
 interface TagProps {
-  text: string;
+  item: any
 }
 
-const Tag: FC<TagProps> = (props: TagProps) => {
+const Tag: FC<TagProps> = ({ item }) => {
+  const desc = Object.keys(item);
+  const total = Object.values(item);
+
   return(
     <View style={styles.container}>
       <Icon
@@ -14,7 +17,8 @@ const Tag: FC<TagProps> = (props: TagProps) => {
         name='check-circle'
         type='font-awesome'
         color="#4EBDD6"/>
-      <Text style={styles.text}>{props.text}</Text>
+      <Text style={styles.text}>{desc}</Text>
+      <Text style={styles.text}>{total}%</Text>
     </View>
   );
 };
@@ -32,6 +36,6 @@ const styles = StyleSheet.create({
   text: {
     fontFamily:"Poppins-Regular",
     color:'#555B70',
-    margin: 10,
+    margin: 5,
   },
 });

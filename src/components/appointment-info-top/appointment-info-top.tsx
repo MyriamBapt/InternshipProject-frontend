@@ -3,12 +3,22 @@ import { StyleSheet, Text, View } from "react-native";
 import RoundAvatar from "../round-avatar/round-avatar";
 import AppointmentInfosBottom from "../appointment-infos-bottom/appointment-infos-bottom";
 import { Icon } from "react-native-elements";
+import { useNavigation } from "@react-navigation/native";
+import { ProfessionalModel } from "../../api/models/professional.model";
+import { useSelector } from "react-redux";
+import { IProfState } from "../../store/reducers/profs-reducer";
 
 interface AppointmentInfoTopProps{
 
 }
 
 const AppointmentInfoTop: FC<AppointmentInfoTopProps> = (props: AppointmentInfoTopProps) => {
+
+  const navigation = useNavigation();
+  // need id => from parent ?
+  //(need to be tested))
+  // @ts-ignore
+  //const prof: ProfessionalModel = useSelector((state: IProfState) => state.profs.profs.find(prof => prof.id === id));
 
   return(
     <View style={styles.container}>

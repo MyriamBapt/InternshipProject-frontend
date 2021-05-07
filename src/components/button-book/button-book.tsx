@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Icon } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
@@ -9,7 +9,7 @@ interface ButtonBookProps{
   id: number;
 }
 
-const ButtonBook= (props: ButtonBookProps) => {
+const ButtonBook: FC<ButtonBookProps>= (props: ButtonBookProps) => {
 
   const navigation = useNavigation();
 

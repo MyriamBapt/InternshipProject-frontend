@@ -36,7 +36,7 @@ const AppointmentPayment: FC<AppointmentPaymentProps> = (props: AppointmentPayme
     <ScrollView contentContainerStyle={{flexGrow:1}}>
     <View style={styles.container}>
       <View style={styles.topContainer}>
-        <AppointmentInfoTop/>
+        <AppointmentInfoTop id={prof.id}/>
       </View>
 
       <View style={styles.paymentContainer}>

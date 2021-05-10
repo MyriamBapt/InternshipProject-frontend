@@ -24,8 +24,14 @@ const AppointmentDate: FC<AppointmentDateProps> = (props: AppointmentDateProps) 
   const id = 9;
   const dispatch = useDispatch();
 
+  useEffect( () => {
+    dispatch(fetchAllProfsRequest());
+  }, []);
+
   // @ts-ignore
   const prof: ProfessionalModel = useSelector((state: IProfState) => state.profs.profs.find(prof => prof.id === id));
+
+  const ProfContext = React.createContext({ dataProf: prof });
 
   const [dataSelected, setDataSelected]= useState(true);
 
@@ -43,7 +49,7 @@ const AppointmentDate: FC<AppointmentDateProps> = (props: AppointmentDateProps) 
           <View style={styles.profInfo}>
             <RoundAvatar photo='https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425_960_720.png'/>
             <View style={styles.profIdentity}>
-              <Text style={styles.name}>Nom prénom</Text>
+              <Text style={styles.name}>Nom {prof.first_name} </Text>
               <View style={styles.occupationRow}>
                 <Text style={styles.occupation}>occupation</Text>
                 <Icon

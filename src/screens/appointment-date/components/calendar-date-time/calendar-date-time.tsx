@@ -67,6 +67,7 @@ const CalendarDateTime: FC<CalendarDateTimeProps> = (props: CalendarDateTimeProp
           is24Hour={true}
           display="default"
           onChange={onChange}
+          minimumDate={new Date()}
         />
       )}
     </View>

@@ -29,7 +29,7 @@ const AppointmentConfirmed: FC<AppointmentConfirmedProps> = (props: AppointmentC
       <ScrollView contentContainerStyle={{flexGrow:1}}>
         <View style={styles.container}>
       <View style={styles.topContainer}>
-        <AppointmentInfoTop/>
+        <AppointmentInfoTop id={prof.id}/>
       </View>
       <View style={styles.confirmationContainer}>
         <Icon

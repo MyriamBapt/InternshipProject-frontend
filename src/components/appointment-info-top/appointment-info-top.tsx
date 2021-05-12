@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import { IProfState } from "../../store/reducers/profs-reducer";
 
 interface AppointmentInfoTopProps{
-
+id?: number
 }
 
 const AppointmentInfoTop: FC<AppointmentInfoTopProps> = (props: AppointmentInfoTopProps) => {
@@ -18,7 +18,7 @@ const AppointmentInfoTop: FC<AppointmentInfoTopProps> = (props: AppointmentInfoT
   // need id => from parent ?
   //(need to be tested))
   // @ts-ignore
-  //const prof: ProfessionalModel = useSelector((state: IProfState) => state.profs.profs.find(prof => prof.id === id));
+  const prof: ProfessionalModel = useSelector((state: IProfState) => state.profs.profs.find(prof => prof.id === props.id));
 
   return(
     <View style={styles.container}>
@@ -26,7 +26,7 @@ const AppointmentInfoTop: FC<AppointmentInfoTopProps> = (props: AppointmentInfoT
         <View style={styles.profInfo}>
           <RoundAvatar photo='https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425_960_720.png'/>
             <View style={styles.profIdentity}>
-              <Text style={styles.name}>Nom Prénom</Text>
+              <Text style={styles.name}>Nom {prof.first_name}</Text>
               <View style={styles.occupationRow}>
                 <Text style={styles.occupation}>Occupation</Text>
                 <Icon

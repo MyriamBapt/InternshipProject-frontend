@@ -1,7 +1,13 @@
-import React  from "react";
+import React, { FC }  from "react";
 import { StyleSheet, TextInput, View } from "react-native";
 
-const SearchBar = ( {term, onTermChange, onTermSubmit} ) => {
+interface SearchBarProps {
+  term: string;
+  onTermChange: any;
+  onTermSubmit: any;
+}
+
+const SearchBar: FC<SearchBarProps> = ( {term, onTermChange, onTermSubmit} ) => {
 
   return(
     <View>

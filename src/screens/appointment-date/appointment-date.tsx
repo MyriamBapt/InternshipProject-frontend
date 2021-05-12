@@ -11,6 +11,8 @@ import { ProfessionalModel } from "../../api/models/professional.model";
 import { IProfState } from "../../store/reducers/profs-reducer";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProfsRequest } from "../../store/actions";
+import CalendarPicker from "./components/calendar-picker/calendar-picker";
+import TimePicker from "./components/time-picker/time-picker";
 
 
 interface AppointmentDateProps{
@@ -49,7 +51,7 @@ const AppointmentDate: FC<AppointmentDateProps> = (props: AppointmentDateProps) 
           <View style={styles.profInfo}>
             <RoundAvatar photo='https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425_960_720.png'/>
             <View style={styles.profIdentity}>
-              <Text style={styles.name}>Nom {prof.first_name} </Text>
+              <Text style={styles.name}>Nom  </Text>
               <View style={styles.occupationRow}>
                 <Text style={styles.occupation}>occupation</Text>
                 <Icon
@@ -62,8 +64,21 @@ const AppointmentDate: FC<AppointmentDateProps> = (props: AppointmentDateProps) 
             </View>
           </View>
           <View style={styles.calendar}>
-            <CalendarDateTime/>
+            <CalendarPicker/>
           </View>
+          <View style={styles.timePickerContainer}>
+            <View style={styles.rowTimePicker}>
+            <TimePicker text={'9h-10h'}/>
+            <TimePicker text={'10-11h'}/>
+            <TimePicker text={'11h-12h'}/>
+            </View>
+            <View style={styles.rowTimePicker}>
+            <TimePicker text={'14h-15h'}/>
+            <TimePicker text={'15h-16h'}/>
+            <TimePicker text={'16h-17h'}/>
+            </View>
+          </View>
+
           <Text style={styles.textChosenData}>Your appointment is on XX/XX at XX:XX </Text>
           <View style={styles.buttonContainer}>
             {dataSelected ? <SimpleButton text='Done' screen='Appointment-info' id={id}/> : null}

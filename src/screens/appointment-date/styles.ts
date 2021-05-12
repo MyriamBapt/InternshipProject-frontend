@@ -77,6 +77,16 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
 
+  timePickerContainer:{
+    flex: 1,
+  },
+
+  rowTimePicker:{
+    flexDirection: 'row',
+    marginBottom: 10,
+    justifyContent: "space-between",
+  },
+
   textChosenData:{
     fontFamily: 'Poppins-SemiBold',
     fontSize: 16,

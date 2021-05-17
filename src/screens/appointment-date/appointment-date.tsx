@@ -86,19 +86,6 @@ const AppointmentDate: FC<AppointmentDateProps> = (props: AppointmentDateProps) 
           <View style={styles.calendar}>
             <CalendarPicker/>
           </View>
-          <View style={styles.timePickerContainer}>
-            <View style={styles.rowTimePicker}>
-            <TimePicker text={'9h-10h'}/>
-            <TimePicker text={'10-11h'}/>
-            <TimePicker text={'11h-12h'}/>
-            </View>
-            <View style={styles.rowTimePicker}>
-            <TimePicker text={'14h-15h'}/>
-            <TimePicker text={'15h-16h'}/>
-            <TimePicker text={'16h-17h'}/>
-            </View>
-          </View>
-
           <Text style={styles.textChosenData}>Your appointment is on XX/XX at XX:XX </Text>
           <View style={styles.buttonContainer}>
             {dataSelected ? <SimpleButton text='Done' screen='Appointment-info' id={id}/> : null}

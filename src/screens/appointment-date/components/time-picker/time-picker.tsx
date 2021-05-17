@@ -7,12 +7,16 @@ interface TimePickerProps{
 
 const TimePicker: FC<TimePickerProps> = (props: TimePickerProps) => {
 
+  // need to add recuperation of rdv
+
   const [timeAvailable, setTimeAvailable] = useState(true)
 
   return(
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.text}>{props.text}</Text>
+      <TouchableOpacity
+        style={styles.button}
+        disabled={timeAvailable ? false : true}>
+        <Text style={timeAvailable ?  styles.button : styles.greyedOutButton}>{props.text}</Text>
       </TouchableOpacity>
     </View>
   )
@@ -28,6 +32,12 @@ const styles = StyleSheet.create({
 
   button:{
     backgroundColor: '#4EBDD6',
+    padding: 10,
+    borderRadius: 24
+  },
+
+  greyedOutButton:{
+    backgroundColor: 'grey',
     padding: 10,
     borderRadius: 24
   },

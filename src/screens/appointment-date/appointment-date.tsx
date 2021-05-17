@@ -43,6 +43,26 @@ const AppointmentDate: FC<AppointmentDateProps> = (props: AppointmentDateProps) 
     //set dataSelected true
   }
 
+  const availabilitiesHandler: any = () => {
+    //recuperation fo every rdv od the day
+    /*
+    for (let rdv of listRdv){
+
+    sitch (rdv.time_rdv){
+
+    case '09:00' : ;
+    case '10:00' : ;
+    case '11:00' : ;
+    case '14:00' : ;
+    case '15:00' : ;
+    case '16:00' : ;
+
+    }
+    }
+
+     */
+  }
+
   return(
     <SafeAreaView style={styles.safeArea}>
     <ScrollView contentContainerStyle={{flexGrow:1}} >

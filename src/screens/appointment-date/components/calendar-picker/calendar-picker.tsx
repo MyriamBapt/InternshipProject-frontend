@@ -39,6 +39,9 @@ const CalendarPicker: FC<CalendarPickerProps> = (props: CalendarPickerProps) => 
 
    */
 
+
+
+
 return(
   <View>
     <Calendar
@@ -46,6 +49,7 @@ return(
       markedDates={{
         '2021-05-19': {disabled: true, disableTouchEvent: true}
       }}
+      onDayPress={(day) => {console.log('selected day', day)}}
     />
   </View>
 )

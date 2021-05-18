@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProfsRequest } from "../../store/actions";
 import CalendarPicker from "./components/calendar-picker/calendar-picker";
 import TimePicker from "./components/time-picker/time-picker";
+import {getRdvByProfAndDate} from "../../api/services/rendez-vous";
 
 
 interface AppointmentDateProps{
@@ -26,42 +27,64 @@ const AppointmentDate: FC<AppointmentDateProps> = (props: AppointmentDateProps) 
   const id = 9;
   const dispatch = useDispatch();
 
-  useEffect( () => {
+  /*useEffect( () => {
     dispatch(fetchAllProfsRequest());
+    Datehandler() => need to add day parameter
   }, []);
+  */
 
   // @ts-ignore
   const prof: ProfessionalModel = useSelector((state: IProfState) => state.profs.profs.find(prof => prof.id === id));
-
-  const ProfContext = React.createContext({ dataProf: prof });
+  //const ProfContext = React.createContext({ dataProf: prof });
 
   const [dataSelected, setDataSelected]= useState(true);
 
-  const dataSelectedHandler: any = () => {
-    //check date and time
-    // dispatch it
-    //set dataSelected true
-  }
+  const [rdvSelectedDate, setRdvSelectedDate]: any[] = useState([]);
+  const [availableHoursArray, setAvailableHoursArray]: any[] = useState([]);
+  const [hourSelected, sethourSelected]: any[] = useState(false);
 
-  const availabilitiesHandler: any = () => {
-    //recuperation fo every rdv od the day
-    /*
-    for (let rdv of listRdv){
-
-    sitch (rdv.time_rdv){
-
-    case '09:00' : ;
-    case '10:00' : ;
-    case '11:00' : ;
-    case '14:00' : ;
-    case '15:00' : ;
-    case '16:00' : ;
-
-    }
+    const DateHandler = (day) => {
+      // should add a use effect too when loading the page + need to get prof.id
+      getRdvByProfAndDate(9, day.dateString)
+        .then((res) => {setRdvSelectedDate(res)})
+        .finally(hoursHandler)
     }
 
-     */
-  }
+    const hoursHandler = () => {
+      // need to add time zone
+      // @ts-ignore
+      let allHoursArray = ['09:00:00+00', '10:00:00+00', '11:00:00+00', '14:00:00+00', '15:00:00+00', '16:00:00+00'];
+      let unvailableHours = [];
+
+      if (rdvSelectedDate) {
+        console.log(rdvSelectedDate)
+        for (let rdv of rdvSelectedDate) {
+          // @ts-ignore
+          unvailableHours.push(rdv.time_rdv);
+          console.log('works' + unvailableHours);
+        }
+
+        for (let i = 0; i < unvailableHours.length; i++) {
+          for (let j = 0; j < allHoursArray.length; j++){
+            if (allHoursArray[j] === unvailableHours[i]){
+              allHoursArray.splice(j,1)
+            }
+          }
+        }
+      }
+      setAvailableHoursArray(allHoursArray);
+      console.log(availableHoursArray)
+    }
+
+    const dataSelectionhandler = () => {
+      if(!hourSelected){
+        sethourSelected(true)
+      }
+      else {
+        sethourSelected(false)
+      }
+    }
+
 
   return(
     <SafeAreaView style={styles.safeArea}>
@@ -84,14 +107,23 @@ const AppointmentDate: FC<AppointmentDateProps> = (props: AppointmentDateProps) 
             </View>
           </View>
           <View style={styles.calendar}>
-            <CalendarPicker/>
+            <CalendarPicker dateHandlerFunction={DateHandler}/>
+            <View style={styles.rowTimePicker}>
+            {availableHoursArray.slice(0,3).map((hour, index) => {
+              return <TimePicker text={hour} dataSelectionFunction={dataSelectionhandler} stateHourSelected={hourSelected}/>
+            })}
+            </View>
+              <View style={styles.rowTimePicker}>
+            {availableHoursArray.slice(3,6).map((hour, index) => {
+              return <TimePicker text={hour} dataSelectionFunction={dataSelectionhandler} stateHourSelected={hourSelected}/>
+            })}
+              </View>
           </View>
           <Text style={styles.textChosenData}>Your appointment is on XX/XX at XX:XX </Text>
           <View style={styles.buttonContainer}>
             {dataSelected ? <SimpleButton text='Done' screen='Appointment-info' id={id}/> : null}
           </View>
       </View>
-
       <View style={styles.bottomContainer}>
         <Text style={styles.titleAppointment}>Your appointment with Professional</Text>
         <AppointmentInfosBottom/>

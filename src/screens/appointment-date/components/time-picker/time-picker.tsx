@@ -3,6 +3,8 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 interface TimePickerProps{
   text: string
+  dataSelectionFunction: any;
+  stateHourSelected: any;
 }
 
 const TimePicker: FC<TimePickerProps> = (props: TimePickerProps) => {
@@ -15,8 +17,8 @@ const TimePicker: FC<TimePickerProps> = (props: TimePickerProps) => {
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.button}
-        disabled={timeAvailable ? false : true}>
-        <Text style={timeAvailable ?  styles.button : styles.greyedOutButton}>{props.text}</Text>
+        onPress={props.dataSelectionFunction} >
+        <Text style={props.stateHourSelected ?  styles.textSelected : styles.text}>{props.text}</Text>
       </TouchableOpacity>
     </View>
   )
@@ -31,13 +33,13 @@ const styles = StyleSheet.create({
   },
 
   button:{
-    backgroundColor: '#4EBDD6',
+    backgroundColor: '#DDDDDD',
     padding: 10,
-    borderRadius: 24
+    borderRadius: 24,
   },
 
-  greyedOutButton:{
-    backgroundColor: 'grey',
+  selectedButton:{
+    backgroundColor: '#4EBDD6',
     padding: 10,
     borderRadius: 24
   },
@@ -46,5 +48,11 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
     textAlign: "center",
     color: '#FFFFFF'
+  },
+
+  textSelected:{
+    fontFamily: 'Poppins-Regular',
+    textAlign: "center",
+    color: '#4EBDD6',
   }
 })

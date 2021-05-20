@@ -50,7 +50,6 @@ return(
       }}
       onDayPress={(day) => props.dateHandlerFunction(day)}
     />
-
   </View>
 )
 }

@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import {SafeAreaView, ScrollView, Text, View } from "react-native";
+import { ActivityIndicator, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import styles from "./styles";
 import SimpleButton from "../../components/simple-button/simple-button";
 import AppointmentInfosBottom from "../../components/appointment-infos-bottom/appointment-infos-bottom";
@@ -37,16 +37,21 @@ const AppointmentDate: FC<AppointmentDateProps> = (props: AppointmentDateProps) 
   const prof: ProfessionalModel = useSelector((state: IProfState) => state.profs.profs.find(prof => prof.id === id));
   //const ProfContext = React.createContext({ dataProf: prof });
 
-  const [dataSelected, setDataSelected]= useState(true);
-
+  const [isdataSelected, setIsDataSelected]= useState(false);
   const [rdvSelectedDate, setRdvSelectedDate]: any[] = useState([]);
   const [availableHoursArray, setAvailableHoursArray]: any[] = useState([]);
-  const [hourSelected, sethourSelected]: any[] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [elementSelected, setElementSelected] = useState(null);
+  const [noDisponibilities, setNoDisponibilities] = useState('')
+  let date: string;
+  let time: string;
 
     const DateHandler = (day) => {
       // should add a use effect too when loading the page + need to get prof.id
+      date = day.dateString;
       getRdvByProfAndDate(9, day.dateString)
         .then((res) => {setRdvSelectedDate(res)})
+        .catch()
         .finally(hoursHandler)
     }
 
@@ -55,36 +60,30 @@ const AppointmentDate: FC<AppointmentDateProps> = (props: AppointmentDateProps) 
       // @ts-ignore
       let allHoursArray = ['09:00:00+00', '10:00:00+00', '11:00:00+00', '14:00:00+00', '15:00:00+00', '16:00:00+00'];
       let unvailableHours = [];
+      let filteredArray = [];
 
       if (rdvSelectedDate) {
         console.log(rdvSelectedDate)
         for (let rdv of rdvSelectedDate) {
           // @ts-ignore
           unvailableHours.push(rdv.time_rdv);
-          console.log('works' + unvailableHours);
         }
-
-        for (let i = 0; i < unvailableHours.length; i++) {
-          for (let j = 0; j < allHoursArray.length; j++){
-            if (allHoursArray[j] === unvailableHours[i]){
-              allHoursArray.splice(j,1)
-            }
-          }
+        // @ts-ignore
+        filteredArray = allHoursArray.filter(hour => !unvailableHours.includes(hour));
+        setAvailableHoursArray(filteredArray);
+        if(!availableHoursArray){
+          setNoDisponibilities('No disponibility for this day.Please choose another date.')
         }
-      }
-      setAvailableHoursArray(allHoursArray);
-      console.log(availableHoursArray)
-    }
-
-    const dataSelectionhandler = () => {
-      if(!hourSelected){
-        sethourSelected(true)
-      }
-      else {
-        sethourSelected(false)
+        setLoading(false)
+        console.log(availableHoursArray);
       }
     }
 
+    const dataSelectionhandler  = (id, i) => {
+      setElementSelected(i)
+      time = availableHoursArray[i];
+      setIsDataSelected(true);
+    }
 
   return(
     <SafeAreaView style={styles.safeArea}>
@@ -106,22 +105,29 @@ const AppointmentDate: FC<AppointmentDateProps> = (props: AppointmentDateProps) 
               </View>
             </View>
           </View>
+          {loading ? <ActivityIndicator size="large" color="#00ff00" /> : null}
           <View style={styles.calendar}>
             <CalendarPicker dateHandlerFunction={DateHandler}/>
-            <View style={styles.rowTimePicker}>
-            {availableHoursArray.slice(0,3).map((hour, index) => {
-              return <TimePicker text={hour} dataSelectionFunction={dataSelectionhandler} stateHourSelected={hourSelected}/>
-            })}
-            </View>
+            {noDisponibilities ? <Text>{noDisponibilities}</Text> : null}
               <View style={styles.rowTimePicker}>
-            {availableHoursArray.slice(3,6).map((hour, index) => {
-              return <TimePicker text={hour} dataSelectionFunction={dataSelectionhandler} stateHourSelected={hourSelected}/>
-            })}
+                {availableHoursArray.map((hour, index) => {
+                  // @ts-ignore
+                  return(
+                    <TouchableOpacity
+                      key={index}
+                      onPress={(e) => dataSelectionhandler(e, index)}
+                      style={elementSelected===index? styles.selectedButton : styles.button}>
+                        <View>
+                          <Text>{hour}</Text>
+                        </View>
+                    </TouchableOpacity>
+                  )
+                })}
               </View>
           </View>
           <Text style={styles.textChosenData}>Your appointment is on XX/XX at XX:XX </Text>
           <View style={styles.buttonContainer}>
-            {dataSelected ? <SimpleButton text='Done' screen='Appointment-info' id={id}/> : null}
+            {isdataSelected ? <SimpleButton text='Done' screen='Appointment-info' id={id} date={date} time={time}/> : null}
           </View>
       </View>
       <View style={styles.bottomContainer}>

@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
 
   rowTimePicker:{
     flexDirection: 'row',
+    flexWrap: "wrap",
     marginBottom: 10,
     justifyContent: "space-between",
   },
@@ -94,6 +95,33 @@ const styles = StyleSheet.create({
     textAlign:'center',
     marginBottom: 10,
   },
+
+  button:{
+    backgroundColor: '#DDDDDD',
+    padding: 15,
+    borderRadius: 24,
+    marginVertical: 10
+  },
+
+  selectedButton:{
+    backgroundColor: '#4EBDD6',
+    padding: 15,
+    borderRadius: 24,
+    marginBottom: 10,
+    marginVertical: 10
+  },
+
+  text:{
+    fontFamily: 'Poppins-Regular',
+    textAlign: "center",
+    color: '#FFFFFF'
+  },
+
+  textSelected:{
+    fontFamily: 'Poppins-Regular',
+    textAlign: "center",
+    color: '#4EBDD6',
+  }
 })
 
 export default styles;

@@ -6,6 +6,8 @@ interface SimpleButtonProps{
   text: string;
   screen: string;
   id?: number;
+  date?: string;
+  time?: string;
 }
 
 const SimpleButton = (props: SimpleButtonProps) => {

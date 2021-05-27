@@ -1,5 +1,5 @@
 export interface ITag {
-  length: any;
+  length?: any;
   id?: number;
   friendly: boolean;
   understanding: boolean;

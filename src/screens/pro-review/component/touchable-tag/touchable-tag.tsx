@@ -11,7 +11,6 @@ const TouchableTag: FC<TouchableTagProps> = (props: TouchableTagProps) => {
   const [tagSelected, setTagSlected]  = useState(true);
 
   const tagHandler = () => {
-
     if (tagSelected){
       setTagSlected(false)
     }
@@ -23,7 +22,7 @@ const TouchableTag: FC<TouchableTagProps> = (props: TouchableTagProps) => {
   return(
   <View>
     <TouchableOpacity
-      style={tagSelected ? styles.tagSelectedStyle : styles.tagUnselectedStyle}
+      style={tagSelected? styles.tagSelectedStyle : styles.tagUnselectedStyle}
       onPress={tagHandler}>
       <Text style={tagSelected ? styles.textforTagSelected : styles.textforTagUnselected}>{props.text}</Text>
     </TouchableOpacity>

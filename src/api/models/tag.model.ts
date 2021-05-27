@@ -6,7 +6,7 @@ export class TagModel {
   understanding: boolean;
   punctuality: boolean;
   efficiency: boolean;
-  length: any;
+  length?: any;
 
   constructor(tag: ITag) {
     this.id = tag.id;

@@ -23,8 +23,8 @@ interface AppointmentDateProps{
 
 const AppointmentDate: FC<AppointmentDateProps> = (props: AppointmentDateProps) => {
   // NEED TO ADD VARIABLES ONCE IT WILL WORK PROPERLY (pro profile connected)
-  //const { id } = props.route.params;
-  const id = 9;
+  const { id } = props.route.params;
+  //const id = 9;
   const dispatch = useDispatch();
 
   /*useEffect( () => {
@@ -35,7 +35,7 @@ const AppointmentDate: FC<AppointmentDateProps> = (props: AppointmentDateProps) 
 
   // @ts-ignore
   const prof: ProfessionalModel = useSelector((state: IProfState) => state.profs.profs.find(prof => prof.id === id));
-  //const ProfContext = React.createContext({ dataProf: prof });
+
 
   const [isdataSelected, setIsDataSelected]= useState(false);
   const [rdvSelectedDate, setRdvSelectedDate]: any[] = useState([]);
@@ -43,13 +43,16 @@ const AppointmentDate: FC<AppointmentDateProps> = (props: AppointmentDateProps) 
   const [loading, setLoading] = useState(false);
   const [elementSelected, setElementSelected] = useState(null);
   const [noDisponibilities, setNoDisponibilities] = useState('')
-  let date: string;
-  let time: string;
+  const [date, setdate] = useState('no date');
+  const [time, setTime] = useState('no time');
+
+  let timeTemp: string = 'test time';
 
     const DateHandler = (day) => {
       // should add a use effect too when loading the page + need to get prof.id
-      date = day.dateString;
-      getRdvByProfAndDate(9, day.dateString)
+      setLoading(true)
+      setdate(day.dateString);
+      getRdvByProfAndDate(prof.id, day.dateString)
         .then((res) => {setRdvSelectedDate(res)})
         .catch()
         .finally(hoursHandler)
@@ -81,7 +84,8 @@ const AppointmentDate: FC<AppointmentDateProps> = (props: AppointmentDateProps) 
 
     const dataSelectionhandler  = (id, i) => {
       setElementSelected(i)
-      time = availableHoursArray[i];
+      timeTemp = availableHoursArray[i];
+      setTime(timeTemp)
       setIsDataSelected(true);
     }
 
@@ -91,11 +95,11 @@ const AppointmentDate: FC<AppointmentDateProps> = (props: AppointmentDateProps) 
       <View style={styles.mainContainer}>
         <View style={styles.calendarContainer}>
           <View style={styles.profInfo}>
-            <RoundAvatar photo='https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425_960_720.png'/>
+            <RoundAvatar photo={prof.avatar_url}/>
             <View style={styles.profIdentity}>
-              <Text style={styles.name}>Nom  </Text>
+              <Text style={styles.name}>{prof.last_name} {prof.first_name} </Text>
               <View style={styles.occupationRow}>
-                <Text style={styles.occupation}>occupation</Text>
+                <Text style={styles.occupation}>{prof.occupation}</Text>
                 <Icon
                 size={19}
                 name='check-circle'
@@ -107,7 +111,7 @@ const AppointmentDate: FC<AppointmentDateProps> = (props: AppointmentDateProps) 
           </View>
           {loading ? <ActivityIndicator size="large" color="#00ff00" /> : null}
           <View style={styles.calendar}>
-            <CalendarPicker dateHandlerFunction={DateHandler}/>
+            <CalendarPicker dateHandlerFunction={DateHandler} date={date}/>
             {noDisponibilities ? <Text>{noDisponibilities}</Text> : null}
               <View style={styles.rowTimePicker}>
                 {availableHoursArray.map((hour, index) => {
@@ -125,7 +129,7 @@ const AppointmentDate: FC<AppointmentDateProps> = (props: AppointmentDateProps) 
                 })}
               </View>
           </View>
-          <Text style={styles.textChosenData}>Your appointment is on XX/XX at XX:XX </Text>
+          {isdataSelected ? <Text style={styles.textChosenData}>Your appointment is on {date} at {time} </Text> : null}
           <View style={styles.buttonContainer}>
             {isdataSelected ? <SimpleButton text='Done' screen='Appointment-info' id={id} date={date} time={time}/> : null}
           </View>

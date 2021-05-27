@@ -24,11 +24,11 @@ const AppointmentInfoTop: FC<AppointmentInfoTopProps> = (props: AppointmentInfoT
     <View style={styles.container}>
       <Text style={styles.title}>Your appointment with</Text>
         <View style={styles.profInfo}>
-          <RoundAvatar photo='https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425_960_720.png'/>
+          <RoundAvatar photo={prof.avatar_url}/>
             <View style={styles.profIdentity}>
-              <Text style={styles.name}>Nom {prof.first_name}</Text>
+              <Text style={styles.name}>{prof.last_name} {prof.first_name}</Text>
               <View style={styles.occupationRow}>
-                <Text style={styles.occupation}>Occupation</Text>
+                <Text style={styles.occupation}>{prof.occupation}</Text>
                 <Icon
                   size={19}
                   name='check-circle'

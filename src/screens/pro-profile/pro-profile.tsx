@@ -73,7 +73,7 @@ const ProProfile: FC<ProProfileProps> = (props: ProProfileProps) => {
             <Image source={{uri : 'https://raw.githubusercontent.com/AboutReact/sampleresource/master/star_filled.png'}} style={styles.star}/>
           </View>
           <Text style={styles.stars}> {starsAverage}/5 </Text>
-          <TouchableOpacity onPress={() =>  navigation.navigate('Reviews')}>
+          <TouchableOpacity onPress={() =>  navigation.navigate('Reviews', {id: prof.id})}>
             <Text style={styles.reviews}>{prof.review.length} reviews</Text>
           </TouchableOpacity>
         </View>
@@ -140,7 +140,7 @@ const ProProfile: FC<ProProfileProps> = (props: ProProfileProps) => {
             </TouchableOpacity>
           </View>
           <Text style={styles.price}>{firstReport ? prof.first_meeting_price : prof.followup_meeting_price}</Text>
-          <Text style={styles.description}>duration</Text>
+          <Text style={styles.description}>1h - 1h30</Text>
         </View>
 
         <View style={styles.button}>

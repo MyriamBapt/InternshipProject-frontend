@@ -16,8 +16,8 @@ interface AppointmentPaymentProps {
 const AppointmentPayment: FC<AppointmentPaymentProps> = (props: AppointmentPaymentProps) => {
 
   const navigation = useNavigation();
-  //const { id } = props.route.params;
-  const id = 9;
+  const { id } = props.route.params;
+  //const id = 9;
   //attention: need to come from previous screen otherwise useSelector returns undefined (need dispatch from app-date screen)
   // @ts-ignore
   const prof: ProfessionalModel = useSelector((state: IProfState) => state.profs.profs.find(prof => prof.id === id));
@@ -86,7 +86,7 @@ const AppointmentPayment: FC<AppointmentPaymentProps> = (props: AppointmentPayme
         </View>
 
         <View style={styles.buttonContainer}>
-          {dataValidated ? <SimpleButton text='Confirm' screen='Appointment-confirmed'/> : null}
+          {dataValidated ? <SimpleButton text='Confirm' screen='Appointment-confirmed' id={id}/> : null}
         </View>
 
       </View>

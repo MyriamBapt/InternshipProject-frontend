@@ -8,22 +8,16 @@ import {
 } from 'react-native';
 
 interface TouchableRatingStarsProps{
-  // need props for stars ?
+  rating: any;
+  defaultRating: any;
 }
 
 
 const TouchableRatingStars: FC<TouchableRatingStarsProps> = (props:TouchableRatingStarsProps) => {
 
-  const [defaultRating, setDefaultRating] = useState(5);
 
   const [maxRating, setMaxRating] = useState([1, 2, 3, 4, 5]);
 
-
-  const starImageFilled =
-    'https://raw.githubusercontent.com/AboutReact/sampleresource/master/star_filled.png';
-
-  const starImageCorner =
-    'https://raw.githubusercontent.com/AboutReact/sampleresource/master/star_corner.png';
 
   const CustomRatingBar = () => {
     return (
@@ -33,13 +27,13 @@ const TouchableRatingStars: FC<TouchableRatingStarsProps> = (props:TouchableRati
             <TouchableOpacity
               activeOpacity={0.7}
               key={item}
-              onPress={() => setDefaultRating(item)}>
+              onPress={() => props.rating(item)}>
               <Image
                 style={styles.starImageStyle}
                 source={
-                  item <= defaultRating
-                    ? {uri: starImageFilled}
-                    : {uri: starImageCorner}
+                  item <= props.defaultRating
+                    ? require('./img/star_filled.png')
+                    : require('./img/star_corner.png')
                 }
               />
             </TouchableOpacity>

@@ -6,6 +6,7 @@ import TimePicker from "../time-picker/time-picker";
 
 interface CalendarPickerProps {
 dateHandlerFunction: any;
+date: any;
 }
 
 const CalendarPicker: FC<CalendarPickerProps> = (props: CalendarPickerProps) => {
@@ -46,7 +47,7 @@ return(
     <Calendar
       minDate={new Date()}
       markedDates={{
-        '2021-05-19': {disabled: true, disableTouchEvent: true}
+      [props.date] : {marked: true, disableTouchEvent: true}
       }}
       onDayPress={(day) => props.dateHandlerFunction(day)}
     />

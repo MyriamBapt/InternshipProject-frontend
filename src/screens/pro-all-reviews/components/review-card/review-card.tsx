@@ -3,18 +3,21 @@ import { StyleSheet, Text, View } from "react-native";
 import StarsRating from "../../../../components/stars-rating/stars-rating";
 
 interface ReviewCardProps{
-  //reviews: ReviewsModel
+  reviews: any;
 }
 
+
 const ReviewCard = (props: ReviewCardProps) => {
+
+
   return(
     <View style={styles.container}>
       <View style={styles.ratingAndDate}>
-        <StarsRating/>
-        <Text style={styles.date}>date_hour</Text>
+        <StarsRating ratings={props.reviews.stars}/>
+        <Text style={styles.date}>{props.reviews.date_hour}</Text>
       </View>
-      <Text style={styles.author}>first_name last_name</Text>
-      <Text style={styles.comment}>review</Text>
+      <Text style={styles.author}>Nom prénom</Text>
+      <Text style={styles.comment}>{props.reviews.review}</Text>
     </View>
   )
 };

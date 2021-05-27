@@ -1,5 +1,5 @@
 export interface IReview {
-  length: any;
+  length?: any;
   id?: number;
   review: string;
   stars: number;

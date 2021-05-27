@@ -5,7 +5,8 @@ export class ReviewModel {
   review: string;
   stars: number;
   date_hour: string;
-  length: any;
+  length?: any;
+
 
   constructor(review: IReview) {
     this.id = review.id;

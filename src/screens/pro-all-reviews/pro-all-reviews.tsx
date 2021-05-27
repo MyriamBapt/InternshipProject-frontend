@@ -4,32 +4,28 @@ import styles from "./styles";
 import RoundAvatar from "../../components/round-avatar/round-avatar";
 import ReviewCard from "./components/review-card/review-card";
 import ToggleReviews from "./components/toggle-reviews/toggle-reviews";
+import { ProfessionalModel } from "../../api/models/professional.model";
+import { useSelector } from "react-redux";
+import { IProfState } from "../../store/reducers/profs-reducer";
 
 interface ProAllReviewsProps{
-  //reviews: ReviewsModel;
+  route: any,
+  screen: string
 }
 
 const ProAllReviews: FC<ProAllReviewsProps> = (props:ProAllReviewsProps) => {
 
-  const fakeData = [
-    {
-      id:1,
-      stars:5,
-      date_hour:'XX/XX/XXXX',
-      first_name: 'paul',
-      last_name:'poupou',
-      review:'very nice comment'
-    },
-    {
-      id:2,
-      stars:3,
-      date_hour:'XX/XX/XXXX',
-      first_name: 'patrick',
-      last_name:'doudou',
-      review:'very nice comment again'
-    },
+  const { id } = props.route.params;
+  // @ts-ignore
+  const prof: ProfessionalModel = useSelector((state: IProfState) => state.profs.profs.find(prof => prof.id === id));
+  const profReviews = prof.review
 
-  ]
+  // @ts-ignore
+  const starsAverage = prof.review.reduce( (prev, current) => {
+    return  prev + current.stars / prof.review.length ;
+  }, 0);
+
+  const totalReviews = profReviews.length
 
   return(
     <View style={styles.container}>
@@ -38,12 +34,12 @@ const ProAllReviews: FC<ProAllReviewsProps> = (props:ProAllReviewsProps) => {
       <View style={styles.main}>
         <View style={styles.header}>
           <View style={styles.headerRow}>
-            <RoundAvatar photo='to be added'/>
+            <RoundAvatar photo={prof.avatar_url}/>
             <View style={styles.starContainer}>
               <Image source={require('./img/star_filled.png')} style={styles.star}/>
             </View>
-            <Text style={styles.numberOfStars}> X,X/5 </Text>
-            <Text style={styles.reviews}>reviews</Text>
+            <Text style={styles.numberOfStars}> {starsAverage}/5 </Text>
+            <Text style={styles.reviews}>{totalReviews} reviews</Text>
           </View>
         </View>
         <View style={styles.buttonRow}>
@@ -51,9 +47,9 @@ const ProAllReviews: FC<ProAllReviewsProps> = (props:ProAllReviewsProps) => {
         </View>
         <View style={styles.list}>
           <FlatList
-            data={fakeData}
+            data={profReviews}
             keyExtractor={(item) => item.id}
-            renderItem={({item}) => <ReviewCard/>}
+            renderItem={({item}) => <ReviewCard key={item.id} reviews={item}/>}
           />
         </View>
       </View>

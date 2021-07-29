@@ -41,7 +41,7 @@ const App: () => Node = () => {
             title: '',
             headerStyle: {
               backgroundColor: '#4EBDD6',
-              headerTintColor: '#FFFFFF'},
+            },
             }}
           />
           <Stack.Screen
@@ -51,7 +51,7 @@ const App: () => Node = () => {
             title: '',
             headerStyle: {
               backgroundColor: '#4EBDD6',
-              headerTintColor: '#FFFFFF'},
+            }
             }}
           />
           <Stack.Screen
